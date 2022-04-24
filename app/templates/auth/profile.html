@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Dashboard Title -->
+<div class="columns">
+    <div class="column is-full">
+        <h1 class="title is-1">Dashboard</h1>
+    </div>
+</div>
+
+<div class="columns">
+    <!-- Left Column -->
+    <div class="column is-half">
+
+        <div class="box">
+            <h1 class="title">Profile</h1>
+            <h2 class="subtitle"> <b>User Name: </b> {{current_user.name}}</h2>
+            <h2 class="subtitle"> <b>User Email: </b> {{current_user.email}}</h2>
+
+        </div>
+
+
+        <div class="box">
+            
+        </div>
+
+    </div>
+
+    <!-- Right Column -->
+    <div class="column is-half">
+
+
+    </div>
+</div>
+        
+
+
+{% endblock %}

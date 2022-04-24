@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mill Viability Tool</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+    <section class="hero is-primary is-fullheight">
+    <div>
+        <div class="hero-head has-background-primary-dark">
+            <nav class="navbar">
+                <div class="container">
+
+                    <div id="navbarMenuHeroA" class="navbar-menu">
+                        <div class="navbar-start">
+                            {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('mod_dash.index') }}" class="navbar-item">
+                                Home
+                            </a>
+                            <a href="{{ url_for('auth.profile') }}" class="navbar-item">
+                                Profile
+                            </a>
+                            {% endif %}
+                        </div>
+                        <div class="navbar-end">
+                            {% if not current_user.is_authenticated %}
+                            <a href="{{ url_for('auth.login') }}" class="navbar-item">
+                                Login
+                            </a>
+                            <a href="{{ url_for('auth.signup') }}" class="navbar-item">
+                                Sign Up
+                            </a>
+                            {% endif %}
+                            {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('auth.logout') }}" class="navbar-item">
+                                Logout
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container">
+            <div class="notification is-primary">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        
+    </div>
+    </section>
+</body>
+
+
+</html>
