@@ -1,0 +1,13 @@
+FROM python:3.9.10-bullseye
+
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
+
+EXPOSE 2222 80 5000
+
+RUN mkdir /opt/code
+RUN mkdir /opt/requirements
+WORKDIR /opt/code
+
+ADD requirements /opt/requirements
+RUN pip install -r /opt/requirements/production.txt

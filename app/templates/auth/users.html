@@ -1,0 +1,496 @@
+{% extends "base.html" %}
+
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+<div class="container section">
+  <div class="columns">
+    <div class="column">
+      <div class="box has-background-link-light">
+        <div class="columns">
+          <div class="column">
+            <div class="tile is-ancestor has-text-centered">
+              <div class="tile is-2 is-vertical is-parent">
+                <!--  Company Level -->
+                <div class="tile is-child">
+                  <div class="field is-grouped is-grouped-left">
+                    <p class="control">
+                      <a id="create_user_button" class="button is-medium is-link">
+                        Create New User
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <div class="tile is-ancestor has-text-centered">
+              <div class="tile is-2 is-vertical is-parent">
+                <!--  Company Level -->
+                  <div class="tile is-child">
+                    <div class="field">
+                      <label class="label is-medium">Company Level:</label>
+                      <p class="control">
+                        <span class="select">
+                          <select>
+                            <option selected value="">All</option>
+                            <option>Employee</option>
+                            <option>Manager</option>
+                            <option>Director</option>
+                            <option>Administrator</option>
+                          </select>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="tile is-child">
+                    <div class="field">
+                      <label class="label is-medium">Select Gender</label>
+                      <p class="control">
+                        <span class="select">
+                          <select class="gender-dropdown">
+                            <option selected value="">All</option>
+                            {% for gender in main_dict['genders'] %}
+                              <option value="{{gender}}">{{gender}}</option>
+                            {% endfor %}
+                          </select>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tile is-2 is-vertical is-parent">
+                  <div class="tile is-child">
+                    <div class="field">
+                      <label class="label is-medium">Select Country</label>
+                      <p class="control">
+                        <span class="select">
+                          <select class="country-dropdown">
+                            <option selected value="">All</option>
+                            {% for country in main_dict['countries'] %}
+                              <option>{{country}}</option>
+                            {% endfor %}
+                          </select>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="tile is-child">
+                    <div class="field">
+                      <label class="label is-medium">Select Role</label>
+                      <p class="control">
+                        <span class="select">
+                          <select class="role-dropdown">
+                            <option selected value="">All</option>
+                            {% for role in main_dict['roles'] %}
+                              <option>{{get_role_name(role.id)}}</option>
+                            {% endfor %}
+                          </select>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tile is-2 is-vertical is-parent">
+                  <div class="tile is-child">
+                    <div class="field">
+                      <label class="label is-medium">Select Site</label>
+                      <p class="control">
+                        <span class="select">
+                          <select class="site-dropdown">
+                            <option selected value="">All</option>
+                            {% for site in main_dict['sites'] %}
+                              <option>{{get_site_name(site.id)}}</option>
+                            {% endfor %}
+                          </select>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="tile is-child">
+                    <div class="field">
+                      <label class="label is-medium">Select Work Group</label>
+                      <p class="control">
+                        <span class="select">
+                          <select class="workgroup-dropdown">
+                            <option selected value="">All</option>
+                            {% for workgroup in main_dict['workgroups'] %}
+                              <option>{{get_workgroup_name(workgroup.id)}}</option>
+                            {% endfor %}
+                          </select>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tile is-2 is-vertical is-parent">
+                  <div class="tile is-child">
+                    <div class="field">
+                      <label class="label is-medium">Select Roster</label>
+                      <p class="control">
+                        <span class="select">
+                          <select class="roster-dropdown">
+                            <option selected value="">All</option>
+                            {% for roster in main_dict['rosters'] %}
+                              <option>{{roster.name }}</option>
+                            {% endfor %}
+                          </select>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="tile is-child">
+                    <div class="field">
+                      <label class="label is-medium">Select Manager</label>
+                      <p class="control">
+                        <span class="select">
+                          <select class="manager-dropdown">
+                            <option selected value="">All</option>
+                            {% for manager in main_dict['managers'] %}
+                              <option>{{get_user_name(manager.id)}}</option>
+                            {% endfor %}
+                            <option>Employee</option>
+                            
+                          </select>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile is-2 is-vertical is-parent">
+                  <div class="tile is-child">
+                    <div class="field">
+                      <label class="label is-medium">Emergency Response</label>
+                      <p class="control">
+                        <span class="select">
+                          <select>
+                            <option selected value="">All</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                          </select>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="tile is-child">
+                    <div class="field">
+                      <label class="label is-medium">User Active</label>
+                      <p class="control">
+                        <span class="select">
+                          <select class="active-dropdown">
+                            <option selected value="">All</option>
+                            <option>Active</option>
+                            <option>Inactive</option>
+                          </select>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="columns">
+            <div class="column">
+              <table id="users-table" class="table is-bordered is-striped is-hoverable is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Action</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Country</th>
+                    <th>Role</th>
+                    <th>Work Group</th>
+                    <th>Site</th>
+                    <th>Manager </th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for user in main_dict['users'] %}
+                  <tr>
+                    <td><a href="{{ url_for('auth.profile', user_id= user.id) }}" class="button is-link">Go to profile</a></td>
+                    
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>{{user.country}}</td>
+                    {% if user.role_id == None %}
+                      <td><span class="tag is-warning">No Role assigned</span></td>
+                    {% else %}
+                      <td>{{get_role_name(user.role_id)}}</td>
+                    {%endif %}
+
+                    {% if user.workgroup_id == None %}
+                      <td><span class="tag is-warning">No Work Group assigned</span></td>
+                    {% else %}
+                      <td>{{get_workgroup_name(user.workgroup_id)}}</td>
+                    {%endif %}
+                    
+                    {% if user.site_id == None %}
+                      <td><span class="tag is-warning">No Site assigned</span></td>
+                    {% else %}
+                      <td>{{get_site_name(user.site_id)}}</td>
+                    {%endif %}
+                    
+                    {% if user.supervisor == None %}
+                      <td><span class="tag is-warning">No Supervisor</span></td>
+                    {% else %}
+                      <td>{{get_user_from_id(user.supervisor_id)}}</td>
+                    {%endif %}
+
+
+                    {% if user.status == 1 %}
+                      <td><span class="tag is-success">active</span></td>
+                    {% else %}
+                      <td><span class="tag is-danger">inactive</span></td>
+                    {% endif %}
+
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="create_user_modal">
+  <div class="modal-background" id="create_user_modal_background"></div>
+  <div class="modal-card ">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Create New User</p>
+      <button class="delete" id="create_user_delete_button" aria-label="close"></button>
+    </header>
+    
+    <section class="modal-card-body has-text-black">
+    <form action="" method="post" novalidate>
+      <div class="form-group">
+        {{ create_user_form.hidden_tag() }}    
+        <div class="form-group">
+          {{ create_user_form.first_name.label }}<br>
+          {{ create_user_form.first_name(class_="input is-medium", size=32) }}
+          <p class="has-text-danger	is-italic	"> *Required</p>
+        </div>
+
+        <div class="form-group">
+          {{ create_user_form.last_name.label }}<br>
+          {{ create_user_form.last_name(class_="input is-medium", size=32) }}
+          <p class="has-text-danger	is-italic	"> *Required</p>
+        </div>
+
+        <div class="form-group">
+          {{ create_user_form.date_of_birth.label }}<br>
+          {{ create_user_form.date_of_birth()}}
+          <p class="has-text-danger	is-italic	"> *Required</p>
+        </div>
+
+        <div class="form-group">
+          {{ create_user_form.email.label }}<br>
+          {{ create_user_form.email(class_="input is-medium", size=32) }}
+          <p class="has-text-danger	is-italic	"> *Required</p>
+        </div>
+
+        <div class="form-group">
+          {{ create_user_form.phone_mobile_1.label }}<br>
+          {{ create_user_form.phone_mobile_1(class_="input is-medium", size=32) }}
+          <p class="has-text-danger	is-italic	"> *Required</p>
+        </div>
+
+        <div class="form-group">
+          {{ create_user_form.phone_mobile_2.label }}<br>
+          {{ create_user_form.phone_mobile_2(class_="input is-medium", size=32) }}
+        </div>
+
+        <div class="form-group">
+          {{ create_user_form.phone_home.label }}<br>
+          {{ create_user_form.phone_home(class_="input is-medium", size=32)}}
+        </div>
+
+        <div class="form-group">
+          {{ create_user_form.country.label }}<br>
+          {{ create_user_form.country(class_="input is-medium", size=32)}}
+          <p class="has-text-danger	is-italic	"> *Required</p>
+        </div>
+
+
+        <div class="form-group">
+          {{ create_user_form.address.label }}<br>
+          {{ create_user_form.address(class_="input is-medium", size=32)}}
+          <p class="has-text-danger	is-italic	"> *Required</p>
+        </div>
+
+        <div class="form-group">
+          {{ create_user_form.home_port.label }}<br>
+          {{ create_user_form.home_port(class_="input is-medium", size=32)}}
+          <p class="has-text-danger	is-italic	"> *Required</p>
+        </div>
+
+        <div class="form-group">
+          {{ create_user_form.point_of_hire.label }}<br>
+          {{ create_user_form.point_of_hire(class_="input is-medium", size=32)}}
+          <p class="has-text-danger	is-italic	"> *Required</p>
+        </div>
+
+        <div class="form-group">
+          {{ create_user_form.date_commenced.label }}<br>
+          {{ create_user_form.date_commenced()}}
+          <p class="has-text-danger	is-italic	"> *Required</p>
+        </div>
+
+        <div class="form-group">
+          {{ create_user_form.contract_expiration_date.label }}<br>
+          {{ create_user_form.contract_expiration_date()}}
+          <p class="has-text-danger	is-italic	"> *Required</p>
+        </div>
+
+        <div class="form-group">
+          <p class="title is-5">
+            Select Site user is assinged<br>
+          </p>
+          <div class="select is-medium">
+            {{ create_user_form.site_id()}}
+          </div>
+          <p class="has-text-danger	is-italic	"> *Required</p>
+        </div>
+
+        <div class="form-group">
+          <p class="title is-5">
+            Select Work Group<br>
+          </p>
+          <div class="select is-medium">
+            {{ create_user_form.workgroup_id()}}
+          </div>
+          <p class="has-text-danger	is-italic	"> *Required</p>
+        </div>
+
+        <div class="form-group">
+          <p class="title is-5">
+            Select User Role<br>
+          </p>
+          <div class="select is-medium">
+            {{ create_user_form.role_id()}}
+          </div>
+          <p class="has-text-danger	is-italic	"> *Required</p>
+        </div>
+
+        <div class="form-group">
+          <p class="title is-5">
+            Select Supervisor<br>
+          </p>
+          <div class="select is-medium">
+            {{ create_user_form.supervisor()}}
+          </div>
+          <p class="has-text-danger	is-italic	"> *Required</p>
+        </div>
+
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      {{create_user_form.submit(class="button is-success")}}
+    </form>
+      <button class="button is-centered" id="create_user_cancel_button">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    dataTable = $('#users-table').DataTable();
+
+    $('.gender-dropdown').on('change', function(e){
+      var gender = $(this).val();
+      $('.gender-dropdown').val(gender)
+      console.log(gender)
+      
+      dataTable.column(3).search(gender).draw();
+    })
+
+    $('.country-dropdown').on('change', function(e){
+      var country = $(this).val();
+      $('.country-dropdown').val(country)
+      console.log(country)
+      
+      dataTable.column(4).search(country).draw();
+    })
+
+    $('.role-dropdown').on('change', function(e){
+      var role = $(this).val();
+      $('.role-dropdown').val(role)
+      console.log(role)
+      
+      dataTable.column(5).search(role).draw();
+    })
+
+
+    $('.workgroup-dropdown').on('change', function(e){
+      var workgroup = $(this).val();
+      $('.workgroup-dropdown').val(workgroup)
+      console.log(workgroup)
+      
+      dataTable.column(6).search(workgroup).draw();
+    })
+
+
+    $('.site-dropdown').on('change', function(e){
+      var site = $(this).val();
+      $('.site-dropdown').val(site)
+      console.log(site)
+      
+      dataTable.column(7).search(site).draw();
+    })
+
+    $('.manager-dropdown').on('change', function(e){
+      var manager = $(this).val();
+      $('.manager-dropdown').val(manager)
+      console.log(manager)
+      
+      dataTable.column(8).search(manager).draw();
+    })
+
+    $('.active-dropdown').on('change', function(e){
+      var active = $(this).val();
+      $('.active-dropdown').val(active)
+      console.log(active)
+      
+      dataTable.column(9).search(active).draw();
+    })
+  });
+
+  
+
+  const create_user_button = document.getElementById('create_user_button');
+  const create_user_cancel_button = document.getElementById('create_user_cancel_button');
+  const create_user_modal = document.getElementById('create_user_modal');
+  const create_user_modal_bg = document.getElementById('create_user_modal_background');
+  const create_user_delete_button = document.getElementById('create_user_delete_button');
+
+
+  create_user_button.addEventListener('click', () => {
+    create_user_modal.classList.add('is-active');
+  })
+
+  create_user_cancel_button.addEventListener('click', () => {
+    create_user_modal.classList.remove('is-active');
+  })
+
+  create_user_delete_button.addEventListener('click', () => {
+    create_user_modal.classList.remove('is-active');
+  })
+
+  create_user_modal_bg.addEventListener('click', () => {
+    create_user_modal.classList.remove('is-active');
+  })
+</script>
+{% endblock %}

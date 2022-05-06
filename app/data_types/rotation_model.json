@@ -1,0 +1,119 @@
+[
+   {
+      "name": "",
+      "name_fr": "10/4 cadre",
+      "description": "",
+      "description_fr": "",
+      "days_on": "10",
+      "days_off": "4",
+      "night_shifts": false
+   },
+   {
+      "name": "",
+      "name_fr": "5/2",
+      "description": "",
+      "description_fr": "",
+      "days_on": "5",
+      "days_off": "2",
+      "night_shifts": false
+   },
+   {
+      "name": "",
+      "name_fr": "7/7 non poste",
+      "description": "",
+      "description_fr": "",
+      "days_on": "7",
+      "days_off": "7",
+      "night_shifts": false
+   },
+   {
+      "name": "",
+      "name_fr": "7/7 cadre",
+      "description": "",
+      "description_fr": "",
+      "days_on": "7",
+      "days_off": "7",
+      "night_shifts": false
+   },
+   {
+      "name": "",
+      "name_fr": "8/6 non poste",
+      "description": "",
+      "description_fr": "",
+      "days_on": "8",
+      "days_off": "6",
+      "night_shifts": false
+   },
+   {
+      "name": "",
+      "name_fr": "8/6 poste",
+      "description": "",
+      "description_fr": "",
+      "days_on": "8",
+      "days_off": "6",
+      "night_shifts": true
+   },
+   {
+      "name": "",
+      "name_fr": "10/4 poste",
+      "description": "",
+      "description_fr": "",
+      "days_on": "10",
+      "days_off": "4",
+      "night_shifts": true
+   },
+   {
+      "name": "",
+      "name_fr": "42/21",
+      "description": "",
+      "description_fr": "",
+      "days_on": "42",
+      "days_off": "21",
+      "night_shifts": false
+   },
+   {
+      "name": "",
+      "name_fr": "10/4 non poste",
+      "description": "",
+      "description_fr": "",
+      "days_on": "10",
+      "days_off": "4",
+      "night_shifts": false
+   },
+   {
+      "name": "",
+      "name_fr": "8/6 cadre",
+      "description": "",
+      "description_fr": "",
+      "days_on": "8",
+      "days_off": "6",
+      "night_shifts": false
+   },
+   {
+      "name": "",
+      "name_fr": "5/2 cadre",
+      "description": "",
+      "description_fr": "",
+      "days_on": "5",
+      "days_off": "2",
+      "night_shifts": false
+   },
+   {
+      "name": "",
+      "name_fr": "6/1",
+      "description": "",
+      "description_fr": "",
+      "days_on": "6",
+      "days_off": "1",
+      "night_shifts": false
+   },
+   {
+      "name": "",
+      "name_fr": "7/7 poste",
+      "description": "",
+      "description_fr": "",
+      "days_on": "7",
+      "days_off": "7",
+      "night_shifts": true
+   }
+]

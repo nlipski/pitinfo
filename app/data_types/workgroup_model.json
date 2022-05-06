@@ -1,0 +1,134 @@
+[
+   {
+      "name":  "survey",
+      "name_fr": "topographie",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "processing",
+      "name_fr": "usine operations",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "mobile maintenance",
+      "name_fr": "maintenance auxiliaires",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "human resources",
+      "name_fr": "ressources humaines",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "finance",
+      "name_fr": "finances",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "camp infrastructure",
+      "name_fr": "camp/infrastructures",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "op mining",
+      "name_fr": "mine op",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "metallurgy",
+      "name_fr": "metallurgie",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "electrical",
+      "name_fr": "electricite",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "health",
+      "name_fr": "sante",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "environment",
+      "name_fr": "environnement",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "health and safety",
+      "name_fr": "hse",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "community relations",
+      "name_fr": "relations communautaires",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "logistics and procurement",
+      "name_fr": "logistique/approvisionnement",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "ug mining",
+      "name_fr": "mine ug",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "maintenance",
+      "name_fr": "maintenance fixe",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "administration",
+      "name_fr": "administration",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "security",
+      "name_fr": "securite",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "construction",
+      "name_fr": "construction",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "emergency response team",
+      "name_fr": "ert",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "mine geology",
+      "name_fr": "geologie mine",
+      "description_fr": "",
+      "description": ""
+   },
+   {
+      "name":  "it",
+      "name_fr": "it",
+      "description_fr": "",
+      "description": ""
+   }
+]

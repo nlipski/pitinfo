@@ -1,88 +1,70 @@
 # Import flask and template operators
-from flask import Flask, render_template
+from unicodedata import category
+from flask import Flask, render_template, session
 
-# Import Celery for background tasks 
-from celery import Celery
+from app.config import Config
 
-# Import SQLAlchemy
-from flask_sqlalchemy import SQLAlchemy
+import errno
 
-# Import database migration tool
-from flask_migrate import Migrate
-
-# Import login session manager
-from flask_login import LoginManager
-
-# Import admin 
-from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
-
-# Define the WSGI application object
-app = Flask(__name__)
-
-# Create a Celery instance
-app.config['CELERY_BROKER_URL'] = '127.0.0.1:6379'
-app.config['CELERY_RESULT_BACKEND'] = '127.0.0.1:6379'
-celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
-celery.conf.update(app.config)
-
-# Configurations
-from config import DevelopmentConfig
-app.config.from_object(DevelopmentConfig)
-
-# Define the database object which is imported
-# by modules and controllers
-db = SQLAlchemy(app)
-
-# Initialize DB migration tool
-migrate = Migrate(app, db)
-
-# Sample HTTP error handling
-@app.errorhandler(404)
-def not_found(error):
-    return render_template('errors/404.html'), 404
-
-# Sample HTTP error handling
-@app.errorhandler(404)
-def not_found(error):
-    return render_template('errors/404.html'), 404
-
-# Import a module / component using its blueprint handler variable (mod_auth)
-from app.mod_auth.controllers import mod_auth
-from app.mod_dashboard.controllers import mod_dash
-
-# Register blueprint(s)
-app.register_blueprint(mod_auth)
-app.register_blueprint(mod_dash)
-
-# Create Login Manager and innitiate session management
-login_manager = LoginManager()
-login_manager.login_view = 'auth.login'
-login_manager.init_app(app)
-
-from app.mod_auth.models import User
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
-# Build the database:
-# This will create the database file using SQLAlchemy
-db.create_all()
-
-# Flask and Flask-SQLAlchemy initialization here
-admin = Admin(app, name='dashboard', template_mode='bootstrap3')
-admin.add_view(ModelView(User, db.session))
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(User))
+# import all the models here:
 
 
-def create_app(config_filename):
+def create_app(config_name=None):
+    from app.extensions import create_data_directories, create_celery, create_error_handler,\
+        create_login_manager, create_blueprints, create_context_processor,\
+        create_admin_views, initialize_babel, initialize_mail_server,\
+        initialize_models
+    from app.extensions import migrate
+
+    if config_name is None:
+        config_name = 'testing'
+
+    # Define the WSGI application object
     app = Flask(__name__)
-    app.config.from_pyfile(config_filename)
+
+    config_module = f"app.config.{config_name.capitalize()}Config"
+
+    app.config.from_object(config_module)
+
+    create_celery(app)
+
+    # # Define the database object which is imported
+    # # by modules and controllers
+    from app.models import db
+
     db.init_app(app)
     migrate.init_app(app, db)
+
+    create_data_directories(app)
+
+    # Create Error Handling
+    create_error_handler(app)
+
+    # Create Login Manager and innitiate session management
+    create_login_manager(app, db)
+
+    # Import a module / component using its blueprint handler variable (mod_auth)
+    # Register blueprint(s)
+    create_blueprints(app)
+
+    with app.app_context():
+        from app.mod_auth import models
+        db.create_all()
+
+    create_context_processor(app)
+
+    create_admin_views(app, db)
+
+    # TODO: enable logging
+    # initialize_app_logging(app)
+
+    initialize_babel(app)
+
+    initialize_mail_server(app)
+
+    # TODO: enable HTTPS support
+    # initialize_web_security(app)
+
+    initialize_models(app, db)
 
     return app

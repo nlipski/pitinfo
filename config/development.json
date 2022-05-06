@@ -1,0 +1,106 @@
+[
+    {
+        "name": "FLASK_ENV",
+        "value": "development"
+    },
+    {
+        "name": "FLASK_CONFIG",
+        "value": "development"
+    },
+    {
+        "name": "MYSQL_DATABASE",
+        "value": "mysql_dev"
+    },
+    {
+        "name": "MYSQL_USER",
+        "value": "user"
+    },
+    {
+        "name": "MYSQL_PASSWORD",
+        "value": "root"
+    },
+    {
+        "name": "MYSQL_ROOT_PASSWORD",
+        "value": "root"
+    },
+    {
+        "name": "MYSQL_PORT",
+        "value": "3306"
+    },
+    {
+        "name": "POSTGRES_DB",
+        "value": "postgres_dev"
+    },
+    {
+        "name": "POSTGRES_USER",
+        "value": "postgres"
+    },
+    {
+        "name": "POSTGRES_HOSTNAME",
+        "value": "localhost"
+    },
+    {
+        "name": "POSTGRES_PORT",
+        "value": "5432"
+    },
+    {
+        "name": "POSTGRES_PASSWORD",
+        "value": "postgres"
+    },
+    {
+        "name": "APPLICATION_DB",
+        "value": "app"
+    },
+    {
+        "name": "SECRET_KEY",
+        "value": "secret"
+    },
+    {
+        "name": "MAPBOX_TOKEN",
+        "value": "pk.eyJ1IjoibWxpcHNraSIsImEiOiJja3VvcG45NnUwazdhMzFwZm9uN2hvcGNrIn0.PCWoWsdgeUg8yoxE_yi19A"
+    },
+    {
+        "name": "NGIX_PORT",
+        "value": "80"
+    },
+    {
+        "name": "CELERY_BROKER_URL",
+        "value": "redis://redis:6379/0"
+    },
+    {
+        "name": "CELERY_RESULT_BACKEND",
+        "value": "redis://redis:6379/0"
+    },
+    {
+        "name": "MAIL_SERVER",
+        "value": "smtp.office365.com"
+    },
+    {
+        "name": "MAIL_DEBUG",
+        "value": "1"
+    },
+    {
+        "name": "MAIL_PORT",
+        "value": "587"
+    },
+    {
+        "name": "MAIL_USE_TLS",
+        "value": "True"
+    },
+    {
+        "name": "MAIL_USE_SSL",
+        "value": "False"
+    },
+    {
+        "name": "MAIL_USERNAME",
+        "value": "mikita.lipski@minebright.com"
+    },
+    {
+        "name": "MAIL_PASSWORD",
+        "value": "^Humster7527"
+    },
+    {
+        "name": "MAIL_DEFAULT_SENDER",
+        "value": "rma@minebright.com"
+    }
+  ]

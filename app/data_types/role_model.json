@@ -1,0 +1,1316 @@
+[
+   {
+      "name":  "control room operator",
+      "name_fr": "operateur salle de controle",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "emergency response team lead",
+      "name_fr": "chef d'equipe d'intervention d'urgence",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "multi-skilled maintenance technician",
+      "name_fr": "technicien polyvalent maintenance",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "community relations coordinator",
+      "name_fr": "coordonnateur developpement communautaire",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "underground equipment operator",
+      "name_fr": "operateur projet mine ug",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "geotechnical engineer",
+      "name_fr": "ingenieur geotechnique",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "general manager of administration",
+      "name_fr": "directeur affaires corporatives",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "storeman",
+      "name_fr": "magasinier",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "electrical supervisor",
+      "name_fr": "superviseur electricite",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "security team lead",
+      "name_fr": "chef d'equipe securite",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "e&i technician",
+      "name_fr": "technicien e&i",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior accountant",
+      "name_fr": "comptable senior",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "health and safety coordinator",
+      "name_fr": "coordonnateur prevention",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "general laborer aggregate crusher",
+      "name_fr": "manoeuvre general concasseur agregat",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "chief surveyor",
+      "name_fr": "chef topographe",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "local employment assistant",
+      "name_fr": "assistant emploi local",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior earthworks supervisor",
+      "name_fr": "superviseur senior terrassement",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "mobile maintenance mechanic",
+      "name_fr": "mecanicien equipements auxiliaires",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "environment and rehabilitation superintendent",
+      "name_fr": "surintendant environnement rehabilitation",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "security manager",
+      "name_fr": "directeur securite",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "expeditor",
+      "name_fr": "expediteur",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "environment, rehabilitation and erosion technician",
+      "name_fr": "technicien environnement rehabilitation et erosion",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "plant intern",
+      "name_fr": "stagiaire usine",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "junior ug mining engineer",
+      "name_fr": "ingenieur minier junior op",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior project coordinator",
+      "name_fr": "coordonnateur de projet senior",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "head of occupational health",
+      "name_fr": "chef du service sante au travail",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "gate security worker",
+      "name_fr": "agent d'accueil",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "security controller",
+      "name_fr": "controleur securite",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior security supervisor",
+      "name_fr": "superviseur senior securite",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "community relations officer",
+      "name_fr": "charge relations communautaires",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "forklift operator",
+      "name_fr": "operateur chariot elevateur",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "project manager",
+      "name_fr": "chargee de projet",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "signalman",
+      "name_fr": "signaleur",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior immigration employment and head count coordinator",
+      "name_fr": "coordonnatrice senior immigration, emploi et hc",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "administration assistant",
+      "name_fr": "assistant administratif et protocole",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "material controller",
+      "name_fr": "controleur materiel",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "junior mobile maintenance mechanic",
+      "name_fr": "mecanicien junior equipements auxiliaires",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "bus driver",
+      "name_fr": "conducteur de bus",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "warehouse assistnat (reception)",
+      "name_fr": "assistant entrepot (emission et reception)",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "open pit surveyor",
+      "name_fr": "topographe mine ciel ouvert",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "mechanical laborer",
+      "name_fr": "manoeuvre specialise (mecanique)",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "administration assistant translator",
+      "name_fr": "assistant administratif traducteur",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "carpenter laborer",
+      "name_fr": "manoeuvre specialise (menuiserie)",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "earthworks superintendent",
+      "name_fr": "surintendant terrassement",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "general laborer",
+      "name_fr": "manoeuvre general",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "emergergency response intern",
+      "name_fr": "stagiaire eiu",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "warehouse assistant (consignment)",
+      "name_fr": "assistant entrepot (consignation)",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "emergency response team member",
+      "name_fr": "agent equipe d'intervention d'urgence",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "crane operator",
+      "name_fr": "grutier",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "junior geological technician",
+      "name_fr": "technicien junior geologie",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "chief mine geologist",
+      "name_fr": "chef geologue mine",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "it technician",
+      "name_fr": "technicien it",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "administration assistant",
+      "name_fr": "assistant administratif",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "ungerground mine manager",
+      "name_fr": "directeur mine souterraine",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "metallurgist",
+      "name_fr": "metallurgiste",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "environment and rehabilitation manager",
+      "name_fr": "directeur environnement et rehabilitation",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "maintenance manager",
+      "name_fr": "directeur maintenance",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior plant operator",
+      "name_fr": "operateur usine senior",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "human resources analyst",
+      "name_fr": "partenaire d'affaires ressources humaines",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "auxillary maintenance superintendent",
+      "name_fr": "surintendant maintenance auxiliaires",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior mine geologist",
+      "name_fr": "geologue de mine senior",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "masonry laborer",
+      "name_fr": "manoeuvre specialise (maconnerie)",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "executive secretary",
+      "name_fr": "secretaire de direction",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "alternate underground mine manager",
+      "name_fr": "directeur adjoint mine souterraine",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "plant training supervisor",
+      "name_fr": "superviseur formation usine",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "ac and mobile maintenance technician",
+      "name_fr": "technicien a/c equipements auxiliaires",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "infrastructure supervisor",
+      "name_fr": "superviseur infrastructures",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "crane helper",
+      "name_fr": "aide grutier",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior underground surveyor",
+      "name_fr": "topographe senior mine souterraine",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "head gardener",
+      "name_fr": "chef jardinier",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "e&i projects superintendent",
+      "name_fr": "surintendant projets e&i",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "high voltage electrical supervisor",
+      "name_fr": "superviseur electricite haute tension",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "community relations assistant",
+      "name_fr": "assistant relations communautaires",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "alternate camp manager",
+      "name_fr": "adjoint chef de camp",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior community relations coordinator",
+      "name_fr": "coordonnateur senior relations communautaires",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "concierge",
+      "name_fr": "concierge",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior crane operator",
+      "name_fr": "grutier senior",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "processing supervisor",
+      "name_fr": "superviseur usine operations",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "refrigeration laborer",
+      "name_fr": "manoeuvre specialise (refrigeration)",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "drafting intern",
+      "name_fr": "stagiaire dessin industriel",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "survey intern",
+      "name_fr": "stagiaire topographie",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "training and emergency response manager",
+      "name_fr": "directeur formation et equipe d'urgence",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "civil and industrial design foreman",
+      "name_fr": "contremaitre general civil et dessin industriel",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "gold room operator",
+      "name_fr": "operateur salle d'or",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "pharmacy attendant",
+      "name_fr": "prepose de pharmacie",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "chief metallurgist",
+      "name_fr": "chef metallurgiste",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "heavy equipment operator",
+      "name_fr": "operateur engins lourds",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "community relations database and gis administrator",
+      "name_fr": "administrateur base de donnees csr et sig",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior open pit surveyor",
+      "name_fr": "topographe senior mine ciel ouvert",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "inventory controller",
+      "name_fr": "controleur d'inventaire",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior underground mining engineer",
+      "name_fr": "ingenieur minier senior ug",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "geotechnical intern",
+      "name_fr": "stagiaire geotechnique",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "nurse",
+      "name_fr": "infirmier",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "survey laborer",
+      "name_fr": "manoeuvre specialise (topographie)",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior mobile maintenance mechanic",
+      "name_fr": "mecanicien senior equipements auxiliaires",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "maintenance intern",
+      "name_fr": "stagiaire maintenance",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "underground projects laborer",
+      "name_fr": "manoeuvre specialise (projets ug)",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "environmental studies technician",
+      "name_fr": "technicien suivi environnemental",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "open pit mine planning superintendent",
+      "name_fr": "surintendant planification mine ciel ouvert",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "country manager",
+      "name_fr": "directeur national",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior geotechnical engineer",
+      "name_fr": "ingenieur geotechnique senior",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "human resources manager",
+      "name_fr": "directrice ressources humaines",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "open pit mining engineer",
+      "name_fr": "ingenieur minier op",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "metallurgy intern",
+      "name_fr": "stagiaire metallurgie",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "mobile maintenance laborer",
+      "name_fr": "manoeuvre specialise (maintenance auxiliaires)",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "general manager of administration",
+      "name_fr": "chef administration",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "mine geologist",
+      "name_fr": "geologue de mine",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "infrastructure electrician",
+      "name_fr": "electricien infrastructures",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "principal accountant",
+      "name_fr": "comptable principal",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "electrical laborer",
+      "name_fr": "manoeuvre specialise (electricite)",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "health and safety manager",
+      "name_fr": "directrice ohs",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "electrical superintendent",
+      "name_fr": "surintendant electricite",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior expeditor",
+      "name_fr": "expediteur senior",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "buyer planner",
+      "name_fr": "planificatrice paiements",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "commercial manager",
+      "name_fr": "directrice commerciale",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "machinist helper",
+      "name_fr": "aide machiniste",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior metallurgist",
+      "name_fr": "metallurgiste senior",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "camp manager",
+      "name_fr": "chef de camp",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "junior metallurgist",
+      "name_fr": "metallurgiste junior",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "gold room supervisor",
+      "name_fr": "superviseur salle d'or",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "it and network engineer",
+      "name_fr": "ingenieur reseaux et systemes informatiques",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "electrical intern",
+      "name_fr": "stagiaire electricite",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "maintenance planner",
+      "name_fr": "planificateur maintenance fixe",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "civil engineering foreman",
+      "name_fr": "contremaitre genie civil",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "mason",
+      "name_fr": "macon",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "plumbing laborer",
+      "name_fr": "manoeuvre specialise (plomberie)",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "warehouse superintendent",
+      "name_fr": "surintendant entrepot",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "electrical foreman",
+      "name_fr": "contremaitre electricite",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior environment coordinator",
+      "name_fr": "coordonnatrice senior environnement",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "accounting clerk",
+      "name_fr": "commis comptable",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior buyer",
+      "name_fr": "acheteur senior",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "underground mining engineer",
+      "name_fr": "ingenieur minier ug",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "junior mine geologist",
+      "name_fr": "geologue de mine junior",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "payroll officer",
+      "name_fr": "agent de paie",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "boilermaker intern",
+      "name_fr": "stagiaire chaudronnerie",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "warehouse team lead",
+      "name_fr": "chef d'equipe entrepot",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "contracts administrator",
+      "name_fr": "administrateur contrats",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "maintenance planner assistant",
+      "name_fr": "assistant planification maintenance fixe",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "mobile maintenance mechanic team lead",
+      "name_fr": "chef d'equipe maintenance auxiliaire",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "plant operator",
+      "name_fr": "operateur usine",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "junior underground mining engineer",
+      "name_fr": "ingenieur minier junior ug",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "plumber",
+      "name_fr": "plombier",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "plant operator team lead",
+      "name_fr": "chef d'equipe usine operations",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "auto-electrician",
+      "name_fr": "auto-electricien equipements auxiliaires",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "livelihood restoration coordinator",
+      "name_fr": "coordonnateur restauration moyens de subsitance",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "",
+      "name_fr": "assistant bienetre et engagement",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "livelihood restoration assistant",
+      "name_fr": "assistant restauration des moyens de subsistance",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "",
+      "name_fr": "charge bienetre et engagement",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "warehouse controller",
+      "name_fr": "controleur entrepot",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "fixed plant maintenance foreman",
+      "name_fr": "surintendant maintenance industrielle",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "environment technician helper",
+      "name_fr": "aide technicien environnement",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "projects superintendent",
+      "name_fr": "surintendant projets",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior reosource geologist",
+      "name_fr": "geologue de ressources senior",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior survey coordinator",
+      "name_fr": "coordonnateur senior topographie",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "fixed plant mechanic",
+      "name_fr": "mecanicien industriel",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "boilermaking laborer",
+      "name_fr": "manoeuvre specialise (chaudronnerie)",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "",
+      "name_fr": "planificateur paiements",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "junior geotechnical engineer",
+      "name_fr": "ingenieur geotechnique junior",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "buyer",
+      "name_fr": "acheteur",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "plant access team lead",
+      "name_fr": "chef d'equipe salle de controle",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "payroll assistant",
+      "name_fr": "assistant paie",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "plant training superintendent",
+      "name_fr": "surintendant formation usine",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "metallurgy team lead",
+      "name_fr": "chef d'equipe metallurgie",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "mechanical supervisor",
+      "name_fr": "superviseur mecanique industrielle",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "driver",
+      "name_fr": "chauffeur",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "geology laborer",
+      "name_fr": "manoeuvre specialise (geologie)",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "local procurement officer",
+      "name_fr": "chargee achats locaux",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "administration coordinator",
+      "name_fr": "coordonnatrice administration et protocole",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "underground surveyor",
+      "name_fr": "topographe mine souterraine",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "geology intern",
+      "name_fr": "stagiaire geologie",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "carpenter",
+      "name_fr": "menuisier",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "communication officer",
+      "name_fr": "chargee de communication",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior security controller",
+      "name_fr": "controleur senior securite",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "industrial engineering intern",
+      "name_fr": "stagiaire genie industriel",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "security superintendent",
+      "name_fr": "surintendant securite",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "expediting assistant",
+      "name_fr": "assistant expedition",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "mine database and gis administrator",
+      "name_fr": "administrateur base de donnees et sig mine",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "mobile maintenance foreman",
+      "name_fr": "contremaitre general maintenance auxiliaire",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "cctv controller",
+      "name_fr": "controleur cctv",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior warehouse and inventory supervisor ",
+      "name_fr": "superviseur senior entrepot et inventaire",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "waste management technician",
+      "name_fr": "technicien gestion des dechets",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "finance intern",
+      "name_fr": "stagiaire finance",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "geology superintendent",
+      "name_fr": "surintendant geologie",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "general manager of operations",
+      "name_fr": "directeur des operations",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "open pit mining manager",
+      "name_fr": "directrice mine a ciel ouvert",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "camp mason",
+      "name_fr": "macon (camp)",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "boilermaker",
+      "name_fr": "chaudronnier",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "earthworks surveyor",
+      "name_fr": "topographe terrassement",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "environment intern",
+      "name_fr": "stagiaire environnement",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "refrigeration technician",
+      "name_fr": "technicien refrigeration",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "expediting coordinator",
+      "name_fr": "coordonnateur expedition",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "construction supervisor",
+      "name_fr": "superviseur construction",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior geological technician",
+      "name_fr": "technicien senior geologie",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "human resources intern",
+      "name_fr": "stagiaire ressources humaines",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "occupational health and safety assistant",
+      "name_fr": "assistant sante et securite au travail",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "security driver",
+      "name_fr": "chauffeur securite",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "metallurgy technician",
+      "name_fr": "technicien metallurgie",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "mining engineering intern",
+      "name_fr": "stagiaire genie minier",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "underground team lead",
+      "name_fr": "chef d'equipe projets ug",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "it intern",
+      "name_fr": "stagiaire it",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "geological technician",
+      "name_fr": "geotechnicien",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "earthworks supervisor",
+      "name_fr": "superviseur terrassement",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "health and safety intern",
+      "name_fr": "stagiaire hse",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "human resources assistant",
+      "name_fr": "assistant ressources humaines",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior smp supervisor",
+      "name_fr": "superviseur senior chaudronnerie",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "emergency response team supervisor",
+      "name_fr": "supervieur equipe d'intervention d'urgence",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "supply chain intern",
+      "name_fr": "stagiaire chaine d'approvisionnement",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "aggregate crusher team lead",
+      "name_fr": "chef d'equipe concasseur agregat",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "",
+      "name_fr": "gardien",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "geological technician",
+      "name_fr": "technicien geologie",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "head of medical emergency response",
+      "name_fr": "chef du service urgences medicales",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "production superintendent",
+      "name_fr": "surintendant usine operations",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior project geologist - resource development",
+      "name_fr": "geologue de projet senior - developpement des ress",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "site administration officer",
+      "name_fr": "charge d'administration (site)",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "",
+      "name_fr": "preventionniste",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "plumber helper",
+      "name_fr": "aide plombier",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior electrical supervisor",
+      "name_fr": "superviseur senior electricite",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "senior planner",
+      "name_fr": "planificateur senior maintenance fixe",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "community relations intern",
+      "name_fr": "stagiaire relations communautaires",
+      "description": "",
+      "description_fr": ""
+   }
+]

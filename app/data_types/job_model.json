@@ -1,0 +1,44 @@
+[
+   {
+      "name": "X-NAKOMGO",
+      "name_fr": "X-NAKOMGO",
+      "description_fr": "NAKOMGO",
+      "description": "NAKOMGO"
+   },
+   {
+      "name": "CP02022",
+      "name_fr": "CP02022",
+      "description_fr": "Community Programs 2022",
+      "description": "Community Programs 2022"
+   },
+   {
+      "name": "000",
+      "name_fr": "000",
+      "description_fr": "non defini",
+      "description": "undefined"
+   },
+   {
+      "name": "OP1-MOVAR",
+      "name_fr": "OP1-MOVAR",
+      "description_fr": "OP1 mining owner variable",
+      "description": "OP1 mining owner variable"
+   },
+   {
+      "name": "UG1-MCFIX",
+      "name_fr": "UG1-MCFIX",
+      "description_fr": "UG1 mining contractors fixed cost",
+      "description": "UG1 mining contractors fixed cost"
+   },
+   {
+      "name": "OP-OHEAD",
+      "name_fr": "OP-OHEAD",
+      "description_fr": "OP- Frais generaux",
+      "description": "OP- Frais generaux"
+   },
+   {
+      "name": "CER2022",
+      "name_fr": "CER2022",
+      "description_fr": "Capital Expenditures 2022",
+      "description": "Capital Expenditures 2022"
+   }
+]

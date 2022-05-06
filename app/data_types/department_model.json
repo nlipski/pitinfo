@@ -1,0 +1,74 @@
+[
+   {
+      "name":  "security",
+      "name_fr": "securite",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "construction",
+      "name_fr": "construction",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "management",
+      "name_fr": "direction generale",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "plant",
+      "name_fr": "usine",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "health and safety",
+      "name_fr": "ohs",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "environment",
+      "name_fr": "environnement",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "mining",
+      "name_fr": "mine",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "community relations",
+      "name_fr": "relations communautaires",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "human resources",
+      "name_fr": "ressources humaines",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "procurement",
+      "name_fr": "logistique/approvisionnement",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "finance",
+      "name_fr": "finances",
+      "description": "",
+      "description_fr": ""
+   },
+   {
+      "name":  "administration",
+      "name_fr": "administration",
+      "description": "",
+      "description_fr": ""
+   }
+]

@@ -1,0 +1,146 @@
+[
+   {
+      "name":  "o0800",
+      "name_fr": "o0800",
+      "description_fr": "entretien",
+      "description": "maintenance"
+   },
+   {
+      "name":  "o0210",
+      "name_fr": "o0210",
+      "description_fr": "geologie des proprietaires et controle de la pente",
+      "description": "owners geology & grade control"
+   },
+   {
+      "name":  "o0200",
+      "name_fr": "o0200",
+      "description_fr": "administration des proprietaires",
+      "description": "owners administration"
+   },
+   {
+      "name":  "o0405",
+      "name_fr": "o0405",
+      "description_fr": "ingenierie et planification miniere",
+      "description": "engineering & mine planning"
+   },
+   {
+      "name":  "a1100",
+      "name_fr": "a1100",
+      "description_fr": "finance",
+      "description": "finance"
+   },
+   {
+      "name":  "22-02",
+      "name_fr": "22-02",
+      "description_fr": "tsf works 2022",
+      "description": "tsf works 2022"
+   },
+   {
+      "name":  "a1400",
+      "name_fr": "a1400",
+      "description_fr": "sante",
+      "description": "health"
+   },
+   {
+      "name":  "a1200",
+      "name_fr": "a1200",
+      "description_fr": "direction generale",
+      "description": "general management"
+   },
+   {
+      "name":  "o0700",
+      "name_fr": "o0700",
+      "description_fr": "en fonctionnement",
+      "description": "operating"
+   },
+   {
+      "name":  "a1800",
+      "name_fr": "a1800",
+      "description_fr": "securite",
+      "description": "security"
+   },
+   {
+      "name":  "a1500",
+      "name_fr": "a1500",
+      "description_fr": "ressources humaines",
+      "description": "human resources"
+   },
+   {
+      "name":  "a2000",
+      "name_fr": "a2000",
+      "description_fr": "durabilite",
+      "description": "environmental"
+   },
+   {
+      "name":  "a1000",
+      "name_fr": "a1000",
+      "description_fr": "camp",
+      "description": "camp"
+   },
+   {
+      "name":  "o0400",
+      "name_fr": "o0400",
+      "description_fr": "equipe de gestion miniere",
+      "description": "mining management team"
+   },
+   {
+      "name":  "o0215",
+      "name_fr": "o0215",
+      "description_fr": "supervision miniere des proprietaires",
+      "description": "owners mining supervision"
+   },
+   {
+      "name":  "o0220",
+      "name_fr": "o0220",
+      "description_fr": "geotechnique",
+      "description": "geotechnical"
+   },
+   {
+      "name": "a1450",
+      "name_fr": "a1450",
+      "description_fr": "securite - clinique",
+      "description": "safety"
+   },
+   {
+      "name": "a1900",
+      "name_fr": "a1900",
+      "description_fr": "approvisionnement et logistique",
+      "description": "supply and logistic"
+   },
+   {
+      "name": "o0415",
+      "name_fr": "o0415",
+      "description_fr": "sondage",
+      "description": "survey"
+   },
+   {
+      "name": "o0410",
+      "name_fr": "o0410",
+      "description_fr": "geologie generale",
+      "description": "geology general"
+   },
+   {
+      "name": "o0205",
+      "name_fr": "o0205",
+      "description_fr": "ingenierie et arpentage des proprietaires",
+      "description": "owners engineering & surveying"
+   },
+   {
+      "name": "a1850",
+      "name_fr": "a1850",
+      "description_fr": "ert de lutte contre l'incendie",
+      "description": "firefighting & ert"
+   },
+   {
+      "name": "a1600",
+      "name_fr": "a1600",
+      "description_fr": "informatique",
+      "description": "information technology"
+   },
+   {
+      "name": "crgen",
+      "name_fr": "crgen",
+      "description_fr": "community relation genneral",
+      "description": "community relations"
+   }
+]

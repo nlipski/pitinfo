@@ -1,0 +1,272 @@
+{% extends 'base.html' %}
+
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+<div class="container section">
+    <div class="columns">
+        <div class="column">
+            <div class="box has-background-link-light">
+                <div class="tile is-ancestor has-text-centered">
+                    <div class="tile is-3 is-vertical is-parent">
+                        <div class="tile is-child box ">
+                            <p class="title">{{_('Today is')}}:</p>
+                            <p class="title has-text-link"> {{get_todays_date() }} </p>
+                        </div>
+                        <div class="tile is-child box ">
+                            <p class="title">{{_('Number of People on Site')}}</p>
+                            <p class="title has-text-link">###</p>
+                        </div>
+                    </div>
+
+                    <div class="tile is-3 is-vertical is-parent">
+                        <div class="tile is-child box ">
+                            <p class="title">{{_('Number of Incoming People (next 7 days)')}}</p>
+                            <p class="title has-text-link">###</p>
+                        </div>
+                        <div class="tile is-child box ">
+                            <p class="title">{{_('Number of Leaveing People (next 7 days)')}}</p>
+                            <p class="title has-text-link">###</p>
+                        </div>
+                    </div>
+
+                    <div class="tile is-3 is-vertical is-parent">
+                        <div class="tile is-child box ">
+                            <p class="title">{{_('Total Number of Days in Lieu Balance')}}</p>
+                            <p class="title has-text-link">###</p>
+                        </div>
+                        <div class="tile is-child box ">
+                            <p class="title">{{_('Average Number of Days in Lieu Balance')}}</p>
+                            <p class="title has-text-link">###</p>
+                        </div>
+                    </div>
+
+                    <div class="tile is-3 is-vertical is-parent">
+                        <div class="tile is-child box ">
+                            <p class="title">{{_('Departments with Highest Lieu Balance')}}</p>
+                            <p class="title has-text-link">###</p>
+                        </div>
+                        <div class="tile is-child box ">
+                            <p class="title">{{_('Departments with Lowest Lieu Balance')}}</p>
+                            <p class="title has-text-link">###</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if current_user.is_administrator or current_user.is_manager %}
+    {% if main_dict['requests'] | length > 0%}
+    <div class="columns">
+        <div class="column">
+            <div class="box has-background-link-light">
+                <div class="columns">
+                    <div class="column">
+                        <h3 class="title is-3 has-text-centered ">{{_('Requests For Approval')}}</h3>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <table id="requests-table" class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
+                            <thead>
+                            <tr>
+                                <th>{{_('Action')}}</th>
+
+                                <th>{{_('Type of Request')}}</th>
+                                <th>{{_('User')}}</th>
+                                <th>{{_('Date Created')}}</th>
+                                <th>{{_('Status')}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for request in main_dict['requests'] %}
+                                <tr>
+                                    <td><button class="button is-link is-medium" id="request_button_{{request.type}}_{{request.id}}" >{{_('Review')}}</button></td>
+
+                                    <td>{{request.type_of_request}}</td>
+                                    <td>{{get_user_name(request.issued_by)}}</td>
+                                    <td>{{request.date_created.strftime('%Y-%m-%d')}}</td>
+                                    {% if request.status == 0 %}
+                                        <td><span class="tag is-warning">{{_('Pending')}}</span></td>
+                                    {% elif request.status == 1%}
+                                        <td><span class="tag is-success">{{_('Approved')}}</span></td>
+                                    {% else %}
+                                        <td><span class="tag is-danger">{{_('Rejected')}}</span></td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endif %}
+
+    <div class="columns">
+        <div class="column">
+            <div class="box has-background-link-light">
+                <div class="columns">
+                    <div class="column">
+                        <h3 class="title is-3 has-text-centered ">{{_('Site Rosters View')}}</h3>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div class="chart" id="rosters_chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="box has-background-link-light">
+                <div class="columns">
+                    <div class="column">
+                        <h3 class="title is-3 has-text-centered ">{{_('Flight Schedules')}}</h3>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div class="box has-background-white-bis">
+                            <div id="calendar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% for request in main_dict['requests'] %}
+<div class="modal" id="request_modal_{{request.type}}_{{request.id}}">
+    <form  id= "approve_{{request.type}}_{{request.id}}" method="post" novalidate>
+        <div class="modal-background" id="request_modal_background_{{request.type}}_{{request.id}}"></div>
+         <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">{{_('Employee Request Form')}}</p>
+                <button class="delete" id="request_deleteButton_{{request.type}}_{{request.id}}" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body has-text-black">
+            {% if request.type_of_request == 'profile_edit' %}
+            {% set request_dict = get_profile_edit_request_dict(request.id)  %}
+            {% set user = get_user_from_id(request.issued_by) %}
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-4 has-text-centered">{{_('Profile Edit Request')}}</h3>
+                    <p> {{_('Requested by')}}: {{user.last_name}} {{user.first_name}}</p>
+                    <p> {{_('Filed')}}: {{request.date_created.strftime('%Y-%m-%d')}}</p>
+                </div>
+            </div>
+            <div class="table-container">
+                <table class="table has-text-centered is-fullwidth">
+                    <tbody>
+                    {% for key in request_dict  %}
+                    <tr>
+                        <td colspan="2"><p>{{key}}</p></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><p class="has-text-danger"><strong>{{request_dict[key][0]}}</strong></p></td>
+                        <td><p class="has-text-success"><strong>{{request_dict[key][1]}}</strong></p></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+            </section>
+            <footer class="modal-card-foot has-text-centered">
+                <button class="button is-success is-large" id="approve_button_{{request.type}}_{{request.id}}">Approve</button>
+                <button class="button is-danger is-large" id="reject_button_{{request.type}}_{{request.id}}">Decline</button>
+            </footer>
+        </div>
+    </form>
+</div>
+{% endfor %}
+
+<script type='text/javascript'>
+
+var rosters_chart = {{ main_dict['rosters']| safe }};
+Plotly.plot('rosters_chart', rosters_chart, {});
+
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    events: {
+            url: '{{url_for("mod_travel.get_data")}}'
+        }
+  });
+  calendar.render();
+});
+
+$(document).ready(function () {
+    $('#requests-table').DataTable();
+  });
+
+</script>
+
+{% if current_user.is_administrator or current_user.is_manager %}
+{% for request in main_dict['requests'] %}
+<script type='text/javascript'>
+
+const request_button_{{request.id}} = document.getElementById('request_button_{{request.type}}_{{request.id}}');
+const request_modal_{{request.id}} = document.getElementById('request_modal_{{request.type}}_{{request.id}}');
+const request_modal_background_{{request.id}} = document.getElementById('request_modal_background_{{request.type}}_{{request.id}}');
+const request_deleteButton_{{request.id}} = document.getElementById('request_deleteButton_{{request.type}}_{{request.id}}');
+
+  request_button_{{request.id}}.addEventListener('click', () => {
+    request_modal_{{request.id}}.classList.add('is-active');
+
+  })
+
+  request_deleteButton_{{request.id}}.addEventListener('click', () => {
+    request_modal_{{request.id}}.classList.remove('is-active');
+  })
+
+  request_modal_background_{{request.id}}.addEventListener('click', () => {
+    request_modal_{{request.id}}.classList.remove('is-active');
+  })
+
+  document.addEventListener('keydown', function(event){
+    if(event.key === "Escape"){
+      request_modal_{{request.id}}.remove('is-active');
+    }
+  });
+
+  function addShow(data) {
+      $('#request_modal_{{request.type}}_{{request.id}}').remove('is-active');
+    }
+
+  function approveForm(ev) {
+      $.ajax({
+        method: 'POST',
+        url: {{ url_for('mod_request.approve_request')| tojson }},
+        data: {request_type : '{{request.type_of_request}}',
+               request_id : '{{request.id}}',
+            }
+      }).done(addShow);
+    }
+
+    function rejectForm(ev) {
+      $.ajax({
+        method: 'POST',
+        url: {{ url_for('mod_request.reject_request')| tojson }},
+        data: {request_type : '{{request.type_of_request}}',
+               request_id : '{{request.id}}',
+            }
+      }).done(addShow);
+    }
+  
+
+  $('#approve_button_{{request.type}}_{{request.id}}').on('click', approveForm);
+  $('#reject_button_{{request.type}}_{{request.id}}').on('click', rejectForm);
+
+</script>
+{%endfor%}
+{% endif %}
+
+{% endblock %}

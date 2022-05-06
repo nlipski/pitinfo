@@ -1,0 +1,54 @@
+[
+    {
+      "name": "FLASK_ENV",
+      "value": "production"
+    },
+    {
+      "name": "FLASK_CONFIG",
+      "value": "testing"
+    },
+    {
+      "name": "POSTGRES_DB",
+      "value": "postgres"
+    },
+    {
+      "name": "POSTGRES_USER",
+      "value": "postgres"
+    },
+    {
+      "name": "POSTGRES_HOSTNAME",
+      "value": "localhost"
+    },
+    {
+      "name": "POSTGRES_PORT",
+      "value": "5433"
+    },
+    {
+      "name": "POSTGRES_PASSWORD",
+      "value": "postgres"
+    },
+    {
+      "name": "APPLICATION_DB",
+      "value": "test"
+    },
+    {
+        "name": "SECRET_KEY",
+        "value": "secret"
+    },
+    {
+        "name": "MAPBOX_TOKEN",
+        "value": "pk.eyJ1IjoibWxpcHNraSIsImEiOiJja3VvcG45NnUwazdhMzFwZm9uN2hvcGNrIn0.PCWoWsdgeUg8yoxE_yi19A"
+    },
+    {
+        "name": "NGIX_PORT",
+        "value": "80"
+    },
+    {
+        "name": "CELERY_BROKER_URL",
+        "value": "redis://redis:6379/0"
+    },
+    {
+        "name": "CELERY_RESULT_BACKEND",
+        "value": "redis://redis:6379/0"
+    }
+  ]

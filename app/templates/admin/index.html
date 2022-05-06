@@ -1,0 +1,37 @@
+{% extends 'admin/master.html' %}
+
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <h1>Administration Dashboard</h1>
+    </div>
+
+    <div class="row">
+        <h3>Bugs Filed</h3>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date Created</th>
+                <th scope="col">Created By</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for issue in main_dict['issues'] %}
+              <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{issue.date_created.strftime('%Y-%m-%d')}}</td>
+                <td>{{get_user_name(issue.created_by_id)}}</td>
+                <td>{{issue.title}}</td>
+                <td>{{issue.description}}</td>
+              </tr>
+            {% endfor%}
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,38 +1,1109 @@
 {% extends "base.html" %}
 
+{% block title %}{{title}}{% endblock %}
 {% block content %}
-<!-- Dashboard Title -->
-<div class="columns">
-    <div class="column is-full">
-        <h1 class="title is-1">Dashboard</h1>
+<!-- Title -->
+
+<div class="container section">
+  {% set user = main_dict['user'] %}
+  <!-- Personal Information Columns -->
+  <nav class="tabs is-centered">
+    <div class="container">
+      <ul>
+        <li class="tab is-active" id="pi_tab" ><a onclick="openTab('pi_tab','personal_info_tab')">{{ _('Personal Information')}}</a></li>
+        <li class="tab" id="ei_tab"><a onclick="openTab('ei_tab','employment_info_tab')">{{ _('Employment Information')}}</a></li>
+        <li class="tab" id="rh_tab"><a onclick="openTab('rh_tab','role_history_tab')">{{ _('Role History')}}</a></li>
+        <li class="tab" id="wh_tab"><a onclick="openTab('wh_tab','workgroup_history_tab')">{{ _('Workgroup History')}}</a></li>
+        <li class="tab" id="c_tab"><a onclick="openTab('c_tab','contacts_tab')">{{ _('Emergency Contacts')}}</a></li>
+        <li class="tab" id="doc_tab"><a onclick="openTab('doc_tab','documents_tab')">{{ _('Personal Documents')}}</a></li>
+        <li class="tab" id="set_tab"><a onclick="openTab('set_tab','settings_tab')">{{ _('Settings')}}</a></li>
+      </ul>
     </div>
-</div>
-
-<div class="columns">
-    <!-- Left Column -->
-    <div class="column is-half">
-
-        <div class="box">
-            <h1 class="title">Profile</h1>
-            <h2 class="subtitle"> <b>User Name: </b> {{current_user.name}}</h2>
-            <h2 class="subtitle"> <b>User Email: </b> {{current_user.email}}</h2>
-
+  </nav>
+  <div class="columns content-tab" id="personal_info_tab">
+    <div class="column">
+      <div class="box has-background-link-light">
+        <div class="columns">
+          <div class="column">
+            <button class="button is-link is-medium is-pulled-right"  id="profile_edit_button">{{ _('Edit Information')}}</button>
+          </div>
         </div>
-
-
-        <div class="box">
-            
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <div class="card is-fullwidth">
+              <header class="card-header has-text-centered">
+                <p class="card-header-title is-centered">
+                  {{ _('Personal Information')}}
+                </p>
+                <span class="card-header-icon card-toggle icon">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </header>
+              <div class="card-content">
+                <div class="columns has-text-centered">
+                  <div class="column is-half">
+                    <p class="title is-5">{{ _('Title')}}</p>
+                    <p class="title is-5">{{ _('First Name')}}</p>
+                    <p class="title is-5">{{ _('Last Name')}}</p>
+                    <p class="title is-5">{{ _('Gender')}}</p>
+                    <p class="title is-5">{{ _('Date Of Birth')}}</p>
+                  </div>
+                  <div class="column">
+                    {% if user.title != None %}
+                    <p class="title has-text-link is-5">{{ user.title.value}}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-warning">{{ _('No Title Entered')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.first_name != None %}
+                    <p class="title has-text-link is-5">{{ user.first_name}}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-warning">{{ _('No First Name Entered')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.last_name != None %}
+                    <p class="title has-text-link is-5">{{ user.last_name}}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-warning">{{ _('No Last Name Entered')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.gender != None %}
+                    <p class="title has-text-link is-5">{{ user.gender}}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-warning">{{ _('No Gender Entered')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.date_of_birth != None %}
+                    <p class="title has-text-link is-5">{{ user.date_of_birth.strftime('%Y-%m-%d')}}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-warning">{{ _('No Gender Entered')}}</span> </p>
+                    {% endif %}
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="columns is-centered">
+          <div class="column is-half">
 
+            <div class="card is-fullwidth">
+              <header class="card-header has-text-centered">
+                <p class="card-header-title is-centered">
+                  {{ _('Contact Information')}}
+                </p>
+                <span class="card-header-icon card-toggle icon">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </header>
+              <div class="card-content is-hidden">
+                <div class="columns has-text-centered">
+                  <div class="column is-half">
+                    <p class="title is-5">{{ _('Home Country')}}</p>
+                    <p class="title is-5">{{ _('Home Address')}}</p>
+                    <p class="title is-5">{{ _('Email')}}</p>
+                    <p class="title is-5">{{ _('Home Phone Number')}}</p>
+                    <p class="title is-5">{{ _('Mobile Phone Number')}}</p>
+                    <p class="title is-5">{{ _('Mobile Phone Number (Alternative)')}}</p>
+                  </div>
+  
+                  <div class="column is-half">
+                    {% if user.country != None %}
+                    <p class="title has-text-link is-5">{{ user.country}}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-warning">{{ _('No County Entered')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.address != None %}
+                    <p class="title has-text-link is-5">{{ user.address}}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-warning">{{ _('No Home Address assigned')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.email != None %}
+                    <p class="title has-text-link is-5"><a href="mailto:{{ user.email}}">{{ user.email}}</a></p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-warning">{{ _('No Email Assigned')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.phone_home != None %}
+                    <p class="title has-text-link is-5">{{ user.phone_home}}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-warning">{{ _('No Phone Number Assigned')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.phone_mobile_1 != None %}
+                    <p class="title has-text-link is-5">{{ user.phone_mobile_1}}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-warning">{{ _('No Mobile Number assigned')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.phone_mobile_2 != None %}
+                    <p class="title has-text-link is-5">{{ user.phone_mobile_2}}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-warning">{{ _('No Mobile Number assigned')}}</span> </p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Right Column -->
-    <div class="column is-half">
-
-
-    </div>
-</div>
+  <!-- Employment Information -->
+  <div class="columns content-tab is-hidden" id="employment_info_tab">
+    <div class="column">
+      
+      <div class="box has-background-link-light">
+        <div class="columns">
+          <div class="column">
+            <button class="button is-link is-medium is-pulled-right"  id="profile_edit_button">{{ _('Edit Information')}}</button>
+          </div>
+        </div>
         
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <div class="card is-fullwidth">
+              <header class="card-header has-text-centered">
+                <p class="card-header-title is-centered">
+                  {{ _('Hire Information')}}
+                </p>
+                <span class="card-header-icon card-toggle icon">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </header>
+              <div class="card-content">
+                <div class="columns has-text-centered">
+                  <div class="column is-half">
+                    <p class="title is-5">{{ _('Employee ID')}}</p>
+                    <p class="title is-5">{{ _('Employee Satus')}}</p>
+                    <p class="title is-5">{{ _('Date Commenced')}}</p>
+                    <p class="title is-5">{{ _('Date Ceased')}}</p>
+                    <p class="title is-5">{{ _('Contract Expiration Date')}}</p>
+                    <p class="title is-5">{{ _('Point Of Hire')}}</p>
+                    <p class="title is-5">{{ _('Home Port')}}</p>
+  
+                  </div>
+                  <div class="column is-half">
+                    <p class="title is-5 has-text-link"> {{user.id}}</p>
+                    {% if user.is_active == True %}
+                    <p class="title has-text-white is-5"><span class="tag is-success">{{ _('Active')}}</span></p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-danger">{{ _('Deactivated')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.date_commenced != None %}
+                    <p class="title has-text-link is-5">{{ user.date_commenced.strftime('%Y-%m-%d') }}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-warning">{{ _('No Date Commenced Entered')}}</span> </p>
+                    {% endif %}
+                    
+                    {% if user.date_ceased != None %}
+                    <p class="title has-text-link is-5">{{ user.date_ceased.strftime('%Y-%m-%d') }}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-warning">{{ _('No Date Ceased Entered')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.contract_expiration_date != None %}
+                    <p class="title has-text-link is-5">{{ user.contract_expiration_date.strftime('%Y-%m-%d') }}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-warning">{{ _('No Contract Expiration Date Entered')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.point_of_hire != None %}
+                    <p class="title has-text-link is-5">{{ user.point_of_hire }}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-warning">{{ _('Point Of Hire Not Entered')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.home_port != None %}
+                    <p class="title has-text-link is-5">{{user.home_port}}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-danger">{{ _('No Home Port Entered')}}</span> </p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <div class="card is-fullwidth">
+              <header class="card-header has-text-centered">
+                <p class="card-header-title is-centered">
+                  {{ _('Current Employee Information')}}
+                </p>
+                <span class="card-header-icon card-toggle icon">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </header>
+              <div class="card-content is-hidden">
+                <div class="columns has-text-centered">
+                  <div class="column is-half">
+                    <p class="title is-5">{{ _('Current Role')}}</p>
+                    <p class="title is-5">{{ _('Current Workgroup')}}</p>
+                    <p class="title is-5">{{ _('Current Site')}}</p>
+                    <p class="title is-5">{{ _('Current Supervisor')}}</p>
+                    <p class="title is-5">{{ _('Is System Administrator')}}</p>
+                    <p class="title is-5">{{ _('Is Manager')}}</p>
+  
+                  </div>
+                  <div class="column is-half">
+                    {% if user.role_id != None %}
+                    <p class="title has-text-link is-5">{{get_role_name(user.role_id)}}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-danger">{{ _('No Role Assigned')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.workgroup_id != None %}
+                    <p class="title has-text-link is-5">{{get_workgroup_name(user.workgroup_id)}}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-danger">{{ _('No Workgroup Assigned')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.site_id != None %}
+                    <p class="title has-text-link is-5">{{get_site_name(user.site_id)}}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-danger">{{ _('No Site Assigned')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.supervisor_id != None %}
+                    <p class="title has-text-link is-5">{{get_user_name(user.supervisor_id)}}</p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-danger">{{ _('User has no Supervisor')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.is_administrator == True %}
+                    <p class="title has-text-white is-5"><span class="tag is-success">{{ _('Yes')}}</span></p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag is-danger">{{ _('No')}}</span> </p>
+                    {% endif %}
+  
+                    {% if user.is_manager == True %}
+                    <p class="title has-text-white is-5"><span class="tag is-success">{{ _('Yes')}}</span></p>
+                    {% else %}
+                    <p class="title has-text-white is-5"><span class="tag  is-danger">{{ _('No')}}</span> </p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Role History Tab --> 
+
+  <div class="columns content-tab is-hidden" id="role_history_tab">
+    <div class="column">
+      <div class="box has-background-link-light">
+        <div class="columns">
+          <div class="column">
+            <h3 class="title has-text-black-bis is-3 has-text-centered">{{ _('Role History')}}</h3>
+            <button class="button is-link is-medium is-pulled-right"  id="new_role_button">{{ _('Assign a new Role')}}</button>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <table id="role-history-table" class="table is-bordered is-striped is-hoverable is-fullwidth">
+              <thead>
+                <tr>
+                  <th>{{ _('Role')}}</th>
+                  <th>{{ _('Date Assigned')}}</th>
+                  <th>{{ _('Assigned By')}}</th>
+              </thead>
+              <tbody>
+                {% for role in main_dict['roles'] %}
+                <tr>
+                  <td>{{get_role_name(role.role_id)}}</td>
+                  <td>{{role.date_created.strftime('%Y-%m-%d')}}</td>
+                  <td>{{get_user_name(role.changed_by)}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
+  <!-- Workgroup History Tab -->
+  <div class="columns content-tab is-hidden" id="workgroup_history_tab">
+    <div class="column">
+      <div class="box has-background-link-light">
+        <div class="columns">
+          <div class="column">
+            <h3 class="title has-text-black-bis is-3 has-text-centered">{{ _('Work Group History')}}</h3>
+            <button class="button is-link is-medium is-pulled-right"  id="new_workgroup_button">{{ _('Assign to a new Work Group')}}</button>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <table id="workgroup-history-table" class="table is-bordered is-striped is-hoverable is-fullwidth">
+              <thead>
+                <tr>
+                  <th>{{ _('Work Group')}}</th>
+                  <th>{{ _('Date Assigned')}}</th>
+                  <th>{{ _('Assigned By')}}</th>
+              </thead>
+              <tbody>
+                {% for workgroup in main_dict['workgroups'] %}
+                <tr>
+                  <td>{{get_workgroup_name(workgroup.workgroup_id)}}</td>
+                  <td>{{workgroup.date_created.strftime('%Y-%m-%d')}}</td>
+                  <td>{{get_user_name(workgroup.changed_by)}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Contacts Tab -->
+  <div class="columns content-tab is-hidden" id="contacts_tab">
+    <div class="column">
+      <div class="box has-background-link-light">
+        <div class="columns">
+          <div class="column">
+            <h3 class="title has-text-black-bis is-3 has-text-centered">{{ _('Emergency Contacts') }}</h3>
+            <button class="button is-link is-medium is-pulled-right" id="new_contact">{{ _('Add new contact')}}</button>
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            <table id="contacts-table" class="table is-bordered is-striped is-hoverable is-fullwidth">
+              <thead>
+                <tr>
+                  <th>{{ _('Action')}}</th>
+                  <th>{{ _('First Name')}}</th>
+                  <th>{{ _('Last Name')}}</th>
+                  <th>{{ _('Relationship')}}</th>
+                  <th>{{ _('Email')}}</th>
+                  <th>{{ _('Mobile Phone Number')}}</th>
+                  <th>{{ _('Next Of Kin')}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for contact in main_dict['contacts'] %}
+                <tr>
+                  <td>
+                      <button id="contact_edit_button_{{contact.id}}" class="button is-warning is-light is-small">Edit</button> 
+                      <a href="{{url_for('auth.delete_user_contact', id= contact.id)}}" class="button is-danger is-light is-small">Delete</a>
+                  </td>
+                  <td>{{contact.first_name}}</td>
+                  <td>{{contact.last_name}}</td>
+                  <td>{{contact.relationship}}</td>
+                  <td>{{contact.email}}</td>
+                  <td>{{contact.phone_mobile_1}}</td>
+                  {% if contact.is_emergency == True %}
+                  <td><span class="tag is-success">Yes</span></td>
+                  {% else %}
+                  <td><span class="tag is-danger">No</span></td>
+                  {% endif %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Documents Tab -->
+  <div class="columns content-tab is-hidden" id="documents_tab">
+    <div class="column">
+      <div class="box has-background-link-light">
+        <div class="columns">
+          <div class="column">
+            <h3 class="title has-text-black-bis is-3 has-text-centered">{{ _('Personal Documents')}}</h3>
+            <button class="button is-link is-medium is-pulled-right" id="document_upload_button" >{{ _('Upload Document')}}</button>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <table id="personal-documents-table" class="table is-bordered is-striped is-hoverable is-fullwidth">
+              <thead>
+                <tr>
+                  <th>{{ _('Action')}}</th>
+                  <th>{{ _('Filename')}}</th>
+                  <th>{{ _('Document Type')}}</th>
+                  <th>{{ _('Expiration Date')}}</th>
+                  <th>{{ _('Upload Date')}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for document in main_dict['documents'] %}
+                <tr>
+                  <td>
+                    <a href="{{url_for('auth.download_file', id = document.id)}}" class="button is-success is-light is-small" target="blank">Download</a>
+                    <a href="{{url_for('auth.delete_file', id= document.id)}}" class="button is-danger is-light is-small">Delete</a>
+                  </td>
+                  <td>{{document.file}}</td>
+                  <td>{{get_document_type_name(document.file_type_id)}}</td>
+                  {% if document.expiration_date == None %}
+                  <td>
+                    <span class="tag is-warning">No Expiration Date</span>
+                  </td>
+                  {% else %}
+                  <td>{{document.expiration_date.strftime('%Y-%m-%d')}}</td>
+                  {% endif %}
+                  <td>{{document.date_created.strftime('%Y-%m-%d')}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Settings Tab -->
+  <div class="columns content-tab is-hidden" id="settings_tab">
+    <div class="column">
+      <div class="box has-background-link-light">
+        <div class="columns">
+          <div class="column">
+            <h3 class="title has-text-black-bis is-3 has-text-centered">{{ _('Settings')}}</h3>
+          </div>
+        </div>
+
+        <div class="tile is-ancestor has-text-centered">
+          <div class="tile  is-vertical is-parent">
+            <div class="tile is-child box has-background-link-light	">
+              <p class="title">{{ _('Roster Settings')}}</p>
+              <button class="button is-warning is-large" id="roster_settings_button">{{ _('Modify Settings')}}</button>
+            </div>
+            <div class="tile is-child box has-background-warning-light	">
+              <p class="title">{{ _('Change Password')}}</p>
+              <button class="button is-warning is-large" id="new_password_button">{{ _('Update Password')}}</button>
+            </div>
+            {% if current_user.is_administrator %}
+            <div class="tile is-child box has-background-danger-light	">
+              <p class="title">{{ _('Deactivate Profile')}}</p>
+              <button class="button is-danger is-large" id="deactivate_user_button">{{ _('Deactivate')}}</button>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="profile_edit_modal">
+  <form action="" method="post" novalidate>
+    <div class="modal-background" id="profile_edit_modal_background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">{{ _('Create New Contact')}}</p>
+        <button class="delete" id="profile_edit_deleteButton" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body has-text-black">
+        <div class="form-group">
+          {{ profile_edit_form.hidden_tag() }}   
+
+          <div class="form-group">
+            {{ profile_edit_form.email.label }}<br>
+            {{ profile_edit_form.email(class="input is-medium", size=32, value=main_dict['user'].email) }}
+          </div>
+
+          <div class="form-group">
+            {{ profile_edit_form.first_name.label }}<br>
+            {{ profile_edit_form.first_name(class="input is-medium", size=32, value=main_dict['user'].first_name) }}
+          </div>
+
+          <div class="form-group">
+            {{ profile_edit_form.last_name.label }}<br>
+            {{ profile_edit_form.last_name(class="input is-medium", size=32, value=main_dict['user'].last_name) }}
+          </div>
+
+          <div class="form-group">
+            {{ profile_edit_form.title.label }}<br>
+            {{ profile_edit_form.title(class="input is-medium")}}
+          </div>
+
+          <div class="form-group">
+            {{ profile_edit_form.gender.label }}<br>
+            {{ profile_edit_form.gender(class="input is-medium", size=32, value=main_dict['user'].gender) }}
+          </div>
+
+          <div class="form-group">
+            {{ profile_edit_form.phone_mobile_1.label }}<br>
+            {{ profile_edit_form.phone_mobile_1(class="input is-medium", size=32, value=main_dict['user'].phone_mobile_1) }}
+            <p class="has-text-danger	is-italic	"> *Required</p>
+          </div>
+
+          <div class="form-group">
+            {{ profile_edit_form.phone_mobile_2.label }}<br>
+            {{ profile_edit_form.phone_mobile_2(class="input is-medium", size=32, value=main_dict['user'].phone_mobile_2) }}
+          </div>
+
+          <div class="form-group">
+            {{ profile_edit_form.phone_home.label }}<br>
+            {{ profile_edit_form.phone_home(class="input is-medium", size=32, value=main_dict['user'].phone_home)}}
+          </div>
+
+          <div class="form-group">
+            {{ profile_edit_form.country.label }}<br>
+            {{ profile_edit_form.country(class="input is-medium", size=32, value=main_dict['user'].country)}}
+            <p class="has-text-danger	is-italic	"> *Required</p>
+          </div>
+
+          <div class="form-group">
+            {{ profile_edit_form.address.label }}<br>
+            {{ profile_edit_form.address(class="input is-medium", size=32, value=main_dict['user'].address)}}
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox">
+                {{ profile_edit_form.confirm_request.label}}
+                {{ profile_edit_form.confirm_request(class="checkbox", type="checkbox")}}
+            </label>
+          </div>
+
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        
+        {{ profile_edit_form.submit(class="button is-primary") }}
+      </form>
+        <button class="button" id="profile_edit_cancel_button">Cancel</button>
+      </footer>
+  </div>
+</div>
+
+
+<div class="modal" id="contact_modal">
+  <form action="" method="post" novalidate>
+    <div class="modal-background" id="contact_modal_background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Create New Contact</p>
+        <button class="delete" id="deleteButton" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body has-text-black">
+        <div class="form-group">
+          {{ contact_form.hidden_tag() }}    
+          <div class="form-group">
+            {{ contact_form.first_name.label }}<br>
+            {{ contact_form.first_name(class="input is-medium", size=32) }}
+            <p class="has-text-danger	is-italic	"> *Required</p>
+          </div>
+
+          <div class="form-group">
+            {{ contact_form.last_name.label }}<br>
+            {{ contact_form.last_name(class="input is-medium", size=32) }}
+            <p class="has-text-danger	is-italic	"> *Required</p>
+          </div>
+
+          <div class="form-group">
+            {{ contact_form.relationship.label }}<br>
+            {{ contact_form.relationship(class="input is-medium", size=32)}}
+            <p class="has-text-danger	is-italic	"> *Required</p>
+          </div>
+
+          <div class="form-group">
+            {{ contact_form.email.label }}<br>
+            {{ contact_form.email(class="input is-medium", size=32) }}
+          </div>
+
+          <div class="form-group">
+            {{ contact_form.phone_mobile_1.label }}<br>
+            {{ contact_form.phone_mobile_1(class="input is-medium", size=32) }}
+            <p class="has-text-danger	is-italic	"> *Required</p>
+          </div>
+
+          <div class="form-group">
+            {{ contact_form.phone_mobile_2.label }}<br>
+            {{ contact_form.phone_mobile_2(class="input is-medium", size=32) }}
+          </div>
+
+          <div class="form-group">
+            {{ contact_form.phone_home.label }}<br>
+            {{ contact_form.phone_home(class="input is-medium", size=32)}}
+          </div>
+
+          <div class="form-group">
+            {{ contact_form.country.label }}<br>
+            {{ contact_form.country(class="input is-medium", size=32)}}
+
+          </div>
+
+          <div class="form-group">
+            {{ contact_form.city.label }}<br>
+            {{ contact_form.city(class="input is-medium", size=32)}}
+
+          </div>
+
+          <div class="form-group">
+            {{ contact_form.address.label }}<br>
+            {{ contact_form.address(class="input is-medium", size=32)}}
+
+          </div>
+
+          <div class="form-group">
+            {{ contact_form.postal_code.label }}<br>
+            {{ contact_form.postal_code(class="input is-medium", size=32)}}
+
+          </div>
+
+          <div class="form-group">
+            {{ contact_form.is_emergency.label }}<br>
+            {{ contact_form.is_emergency(class="checkbox", type="checkbox")}}
+          </div>
+
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        {{ contact_form.submit(class="button is-primary") }}
+        <button class="button" id="cancel_contact_button">Cancel</button>
+      </footer>
+  </div>
+  </form>
+</div>
+
+
+<div class="modal" id="document_upload_modal">
+  <div class="modal-background" id="document_upload_modal_background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Upload a Personal Document</p>
+      <button class="delete" id="document_upload_delete_button" aria-label="close"></button>
+    </header>
+    <form action="" method="POST" enctype="multipart/form-data">
+    <section class="modal-card-body has-text-black">
+      <div class="form-group">
+        {{ document_form.hidden_tag() }}    
+        <div class="form-group">
+          <p class="title is-5">
+            {{ document_form.file_name.label }}<br>
+          </p>
+          {{ document_form.file_name(class="input is-medium", size=32) }}
+        </div>
+        <div class="form-group">
+          <p class="title is-5">
+            {{ document_form.file_type.label }}<br>
+          </p>
+          <div class="select is-medium">
+            {{ document_form.file_type() }}
+          </div>
+        </div>
+        <div class="form-group">
+          <p class="title is-5">
+            {{ document_form.expiration_date.label }}<br>
+          </p>
+          <div>
+            {{ document_form.expiration_date() }}
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <p class="title is-5">
+            {{ document_form.file.label }}
+          </p>
+          <div class="file">
+            <label class="file-label">
+              {{ document_form.file(class="file-input") }}
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  Choose a file…
+                </span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      {{ document_form.submit(class="button is-success") }}
+    </form>
+      <button class="button" id="document_upload_cancel_button">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<div class="modal" id="new_workgroup_modal">
+  <div class="modal-background" id="new_workgroup_modal_background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Select new Work Group</p>
+      <button class="delete" id="new_workgroup_delete_button" aria-label="close"></button>
+    </header>
+    
+      <section class="modal-card-body has-text-black">
+        <form action="" method="post">
+        {{ workgroup_update_form.csrf_token }}
+        {{ workgroup_update_form.hidden_tag() }}
+        
+          <div class="field has-addons">
+            <div class="control is-expanded">
+              <div class="select is-fullwidth">
+              {{workgroup_update_form.workgroup()}}
+              </div>
+            </div>
+            <div class="control">
+              {{ workgroup_update_form.submit(class="button is-success") }}
+            </div>
+          </div>
+          <div class="field">
+            <label class="checkbox">
+                {{ workgroup_update_form.confirm_work.label}}
+                {{ workgroup_update_form.confirm_work(class="checkbox", type="checkbox")}}
+            </label>
+          </div>
+        </form>
+      </section>
+
+    <footer class="modal-card-foot">
+      <button class="button is-centered" id="new_workgroup_cancel_button">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<div class="modal" id="new_role_modal">
+  <div class="modal-background" id="new_role_modal_background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Select new Role</p>
+      <button class="delete" id="new_role_delete_button" aria-label="close"></button>
+    </header>
+    <form action="" method="post" novalidate>
+      {{ role_update_form.csrf_token }}
+      <section class="modal-card-body has-text-black">
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <div class="select is-fullwidth">
+              {{ role_update_form.role()}}
+            </div>
+          </div>
+          <div class="control">
+            {{ role_update_form.submit(class="button is-success") }}
+          </div>
+        </div>
+        <div class="field">
+          <label class="checkbox">
+              {{ role_update_form.confirm_role.label}}
+              {{ role_update_form.confirm_role(class="checkbox", type="checkbox")}}
+          </label>
+        </div>
+      </section>
+    </form>
+
+    <footer class="modal-card-foot">
+      <button class="button is-centered" id="new_role_cancel_button">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<div class="modal" id="new_password_modal">
+  <div class="modal-background" id="new_password_modal_background"></div>
+  <div class="modal-card ">
+    <header class="modal-card-head has-background-warning">
+      <p class="modal-card-title">Update User Password</p>
+      <button class="delete" id="new_password_delete_button" aria-label="close"></button>
+    </header>
+    <form action="" method="post" novalidate>
+      {{ password_form.hidden_tag() }}
+    <section class="modal-card-body has-text-black has-text-centered has-background-warning">
+      <div class="field">
+        <label class="label"> {{ password_form.old_password.label}} </label>
+        {{ password_form.old_password(class="input") }}
+      </div>
+      
+      <div class="field">
+        <label class="label"> {{ password_form.password.label}} </label>
+        {{ password_form.password(class="input") }}
+      </div>
+
+      <div class="field">
+        <label class="label"> {{ password_form.confirm_password.label}} </label>
+        {{ password_form.confirm_password(class="input") }}
+      </div>
+    
+    </section>
+    <footer class="modal-card-foot has-background-warning">
+      {{ password_form.submit(class="button is-success") }}
+    </form>
+      <button class="button is-centered" id="new_password_cancel_button">Cancel</button>
+    </footer>
+  
+  </div>
+</div>
+{% if current_user.is_administrator %}
+<div class="modal" id="deactivate_user_modal">
+  <div class="modal-background" id="deactivate_user_modal_background"></div>
+  <div class="modal-card ">
+    <header class="modal-card-head has-background-danger-light">
+      <p class="modal-card-title">Deactivate Account</p>
+      <button class="delete" id="deactivate_user_delete_button" aria-label="close"></button>
+    </header>
+    
+    <section class="modal-card-body has-text-black has-text-centered has-background-danger-light">
+    <form action="" method="post" novalidate>
+      {{ deactivate_user_form.hidden_tag() }}
+      <div class="field">
+        <label class="checkbox">
+            {{ deactivate_user_form.confirm_deact.label}} <br>
+            {{ deactivate_user_form.confirm_deact(class="checkbox", type="checkbox")}}
+        </label>
+      </div>
+        {{deactivate_user_form.submit(class="button is-large is-danger")}}
+    </form>
+    </section>
+    <footer class="modal-card-foot has-background-danger-light">
+    
+      <button class="button is-centered" id="deactivate_user_cancel_button">Cancel</button>
+    </footer>
+  </div>
+</div>
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/bulma-accordion@2.0.1/dist/js/bulma-accordion.min.js"></script>
+<script>
+  const profile_edit_button = document.getElementById('profile_edit_button');
+  
+  const profile_edit_modal = document.getElementById('profile_edit_modal');
+  const profile_edit_modal_background = document.getElementById('profile_edit_modal_background');
+  const profile_edit_deleteButton = document.getElementById('profile_edit_deleteButton');
+  const profile_edit_cancel_button = document.getElementById('profile_edit_cancel_button');
+
+
+  const new_contact_button = document.getElementById('new_contact');
+  const contact_cancel_button = document.getElementById('cancel_contact_button');
+  const contact_modal = document.getElementById('contact_modal');
+  const contact_modal_bg = document.getElementById('contact_modal_background');
+  const contact_delete_button = document.querySelector('#deleteButton');
+
+  
+  const document_upload_button = document.getElementById('document_upload_button');
+  const document_upload_cancel_button = document.getElementById('document_upload_cancel_button');
+  const document_upload_modal = document.getElementById('document_upload_modal');
+  const document_upload_modal_bg = document.getElementById('document_upload_modal_background');
+  const document_upload_delete_button = document.getElementById('document_upload_delete_button');
+
+
+  const new_workgroup_button = document.getElementById('new_workgroup_button');
+  const new_workgroup_cancel_button = document.getElementById('new_workgroup_cancel_button');
+  const new_workgroup_modal = document.getElementById('new_workgroup_modal');
+  const new_workgroup_modal_bg = document.getElementById('new_workgroup_modal_background');
+  const new_workgroup_delete_button = document.getElementById('new_workgroup_delete_button');
+
+
+  const new_role_button = document.getElementById('new_role_button');
+  const new_role_cancel_button = document.getElementById('new_role_cancel_button');
+  const new_role_modal = document.getElementById('new_role_modal');
+  const new_role_modal_bg = document.getElementById('new_role_modal_background');
+  const new_role_delete_button = document.getElementById('new_role_delete_button');
+
+
+  const new_password_button = document.getElementById('new_password_button');
+  const new_password_cancel_button = document.getElementById('new_password_cancel_button');
+  const new_password_modal = document.getElementById('new_password_modal');
+  const new_password_modal_bg = document.getElementById('new_password_modal_background');
+  const new_password_delete_button = document.getElementById('new_password_delete_button');
+
+  {% if current_user.is_administrator %}
+  const deactivate_user_button = document.getElementById('deactivate_user_button');
+  const deactivate_user_cancel_button = document.getElementById('deactivate_user_cancel_button');
+  const deactivate_user_modal = document.getElementById('deactivate_user_modal');
+  const deactivate_user_modal_bg = document.getElementById('deactivate_user_modal_background');
+  const deactivate_user_delete_button = document.getElementById('deactivate_user_delete_button');
+
+
+  deactivate_user_button.addEventListener('click', () => {
+    deactivate_user_modal.classList.add('is-active');
+  })
+
+  deactivate_user_cancel_button.addEventListener('click', () => {
+    deactivate_user_modal.classList.remove('is-active');
+  })
+
+  deactivate_user_delete_button.addEventListener('click', () => {
+    deactivate_user_modal.classList.remove('is-active');
+  })
+
+  deactivate_user_modal_bg.addEventListener('click', () => {
+    deactivate_user_modal.classList.remove('is-active');
+  })
+
+{% endif %}
+
+  new_password_button.addEventListener('click', () => {
+    new_password_modal.classList.add('is-active');
+  })
+
+  new_password_cancel_button.addEventListener('click', () => {
+    new_password_modal.classList.remove('is-active');
+  })
+
+  new_password_delete_button.addEventListener('click', () => {
+    new_password_modal.classList.remove('is-active');
+  })
+
+  new_password_modal_bg.addEventListener('click', () => {
+    new_password_modal.classList.remove('is-active');
+  })
+
+
+
+  new_role_button.addEventListener('click', () => {
+    new_role_modal.classList.add('is-active');
+  })
+
+  new_role_cancel_button.addEventListener('click', () => {
+    new_role_modal.classList.remove('is-active');
+  })
+
+  new_role_delete_button.addEventListener('click', () => {
+    new_role_modal.classList.remove('is-active');
+  })
+
+  new_role_modal_bg.addEventListener('click', () => {
+    new_role_modal.classList.remove('is-active');
+  })
+
+
+
+
+  new_workgroup_button.addEventListener('click', () => {
+    new_workgroup_modal.classList.add('is-active');
+  })
+
+  new_workgroup_cancel_button.addEventListener('click', () => {
+    new_workgroup_modal.classList.remove('is-active');
+  })
+
+  new_workgroup_delete_button.addEventListener('click', () => {
+    new_workgroup_modal.classList.remove('is-active');
+  })
+
+  new_workgroup_modal_bg.addEventListener('click', () => {
+    new_workgroup_modal.classList.remove('is-active');
+  })
+
+
+  profile_edit_button.addEventListener('click', () => {
+    profile_edit_modal.classList.add('is-active');
+  })
+
+  profile_edit_cancel_button.addEventListener('click', () => {
+    profile_edit_modal.classList.remove('is-active');
+  })
+
+  profile_edit_deleteButton.addEventListener('click', () => {
+    profile_edit_modal.classList.remove('is-active');
+  })
+
+  profile_edit_modal_background.addEventListener('click', () => {
+    profile_edit_modal.classList.remove('is-active');
+  })
+
+
+  new_contact_button.addEventListener('click', () => {
+    contact_modal.classList.add('is-active');
+  })
+
+  contact_cancel_button.addEventListener('click', () => {
+    contact_modal.classList.remove('is-active');
+  })
+
+  contact_delete_button.addEventListener('click', () => {
+    contact_modal.classList.remove('is-active');
+  })
+
+  contact_modal_bg.addEventListener('click', () => {
+    contact_modal.classList.remove('is-active');
+  })
+
+  document_upload_button.addEventListener('click', () => {
+    document_upload_modal.classList.add('is-active');
+  })
+
+  document_upload_cancel_button.addEventListener('click', () => {
+    document_upload_modal.classList.remove('is-active');
+  })
+
+  document_upload_delete_button.addEventListener('click', () => {
+    document_upload_modal.classList.remove('is-active');
+  })
+
+  document_upload_modal_background.addEventListener('click', () => {
+    document_upload_modal.classList.remove('is-active');
+  })
+
+  document.addEventListener('keydown', function(event){
+    if(event.key === "Escape"){
+      contact_modal.classList.remove('is-active');
+      profile_edit_modal.remove('is-active');
+      document_upload_modal.remove('is-active');
+      new_workgroup_modal.remove('is-active');
+      new_role_delete_button.remove('is-active');
+      deactivate_user_modal.remove('is-active');
+      new_password_modal.remove('is-active');
+    }
+  });
+
+  $(document).ready(function () {
+    $('#contacts-table').DataTable();
+  });
+
+  $(document).ready(function () {
+    $('#role-history-table').DataTable();
+  });
+  
+  $(document).ready(function () {
+    $('#workgroup-history-table').DataTable();
+  });
+
+  function openTab(evt, tabName) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("content-tab");
+    for (i = 0; i < x.length; i++) {
+        x[i].classList.add('is-hidden');
+    }
+    tablinks = document.getElementsByClassName("tab");
+    for (i = 0; i < x.length; i++) {
+        tablinks[i].classList.remove('is-active');
+    }
+    document.getElementById(tabName).classList.remove('is-hidden');
+    document.getElementById(evt).classList.add("is-active");
+  }
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    let cardToggles = document.getElementsByClassName('card-toggle');
+    for (let i = 0; i < cardToggles.length; i++) {
+      cardToggles[i].addEventListener('click', e => {
+        e.currentTarget.parentElement.parentElement.childNodes[3].classList.toggle('is-hidden');
+      });
+    }
+  });
+
+</script>
 {% endblock %}

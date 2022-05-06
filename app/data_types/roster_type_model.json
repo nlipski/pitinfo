@@ -1,0 +1,14 @@
+[
+    {
+        "name" : "42/21",
+        "description" : "Roster types",
+        "days_on" : 42,
+        "days_off" : 21
+    },
+    {
+        "name" : "21/14",
+        "description" : "Roster types",
+        "days_on" : 21,
+        "days_off" : 14
+    }
+]

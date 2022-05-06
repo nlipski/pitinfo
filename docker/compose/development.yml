@@ -1,0 +1,102 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:6-alpine
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+    ports:
+      - "${MYSQL_PORT}:3306"
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+      
+
+# # Main application compose section
+#   web:
+#     image: web:latest
+#     build:
+#       context: ${PWD}
+#       dockerfile: docker/dockerfiles/web/Dockerfile.development
+#     environment:
+#       FLASK_ENV: ${FLASK_ENV}
+#       FLASK_CONFIG: ${FLASK_CONFIG}
+#       APPLICATION_DB: ${APPLICATION_DB}
+#       MYSQL_USER: ${MYSQL_USER}
+#       MYSQL_HOSTNAME: "db"
+#       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+#       MYSQL_PORT: ${MYSQL_PORT}
+#       SECRET_KEY: ${SECRET_KEY}
+#       MAPBOX_TOKEN: ${MAPBOX_TOKEN}
+#       MAIL_SERVER: ${MAIL_SERVER}
+#       MAIL_DEBUG: ${MAIL_DEBUG}
+#       MAIL_PORT: ${MAIL_PORT}
+#       MAIL_USE_TLS: ${MAIL_USE_TLS}
+#       MAIL_USE_SSL: ${MAIL_USE_SSL}
+#       MAIL_USERNAME: ${MAIL_USERNAME}
+#       MAIL_PASSWORD: ${MAIL_PASSWORD}
+#       MAIL_DEFAULT_SENDER: ${MAIL_DEFAULT_SENDER}
+
+#       CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+#       CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
+
+
+#     command: gunicorn -w 1 -b 0.0.0.0 wsgi:app
+#     volumes:
+#       - ${PWD}:/opt/code
+#     ports:
+#       - "8000:8000"
+#     depends_on:
+#       - redis
+#       - db
+
+
+
+
+#   celery_worker:
+#     image: celery_worker:latest
+#     build:
+#       context: ${PWD}
+#       dockerfile: docker/dockerfiles/web/Dockerfile.development
+#     command: "celery --app=app.celery.celery_init:app worker --loglevel=info"
+#     volumes:
+#       - ${PWD}:/opt/code
+#     environment:
+#       FLASK_ENV: ${FLASK_ENV}
+#       FLASK_CONFIG: ${FLASK_CONFIG}
+#       APPLICATION_DB: ${APPLICATION_DB}
+#       MYSQL_USER: ${MYSQL_USER}
+#       MYSQL_HOSTNAME: "db"
+#       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+#       MYSQL_PORT: ${MYSQL_PORT}
+#       SECRET_KEY: ${SECRET_KEY}
+#       MAPBOX_TOKEN: ${MAPBOX_TOKEN}
+#       MAIL_SERVER: ${MAIL_SERVER}
+#       MAIL_DEBUG: ${MAIL_DEBUG}
+#       MAIL_PORT: ${MAIL_PORT}
+#       MAIL_USE_TLS: ${MAIL_USE_TLS}
+#       MAIL_USE_SSL: ${MAIL_USE_SSL}
+#       MAIL_USERNAME: ${MAIL_USERNAME}
+#       MAIL_PASSWORD: ${MAIL_PASSWORD}
+#       MAIL_DEFAULT_SENDER: ${MAIL_DEFAULT_SENDER}
+
+#       CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+#       CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
+
+#       BROKER_URL: ${CELERY_BROKER_URL}
+#       RESULT_BACKEND: ${CELERY_BROKER_URL}
+
+#     depends_on:
+#       - redis
+#       - db
+
+
+volumes:
+  dbdata:

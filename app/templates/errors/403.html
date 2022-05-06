@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="section is-medium">
+    <div class="container">
+        <div class="columns is-vcentered">
+            <div class="column has-text-centered">
+                <h1 class="title">403 Unauthorized Access</h1>
+                <p class="subtitle">Seems like you're trying to access data that is not meant for you.</p>
+                <p class="subtitle">Please contact your admin or click on email link below to request assistance.</p>
+                <a class="button is-large is-link" href="{{url_for('mod_main.main')}}">Go to Dashboard</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

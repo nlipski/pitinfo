@@ -1,63 +1,239 @@
 <!DOCTYPE html>
-<html>
+<html class="has-aside-left has-navbar-fixed-top has-aside-expanded">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mill Viability Tool</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>Timewise</title>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/dataTables.bulma.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchpanes/1.4.0/css/searchPanes.bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.4/css/select.bulma.min.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://kit.fontawesome.com/b7b2aaecda.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gantt-schedule-timeline-calendar/dist/gstc.wasm.umd.min.js"></script>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js'></script>
+    <!-- Logo on tab -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logos/RMA_logo.png') }}">
 </head>
 
-<body>
-    <section class="hero is-primary is-fullheight">
-    <div>
-        <div class="hero-head has-background-primary-dark">
-            <nav class="navbar">
-                <div class="container">
+<body>  
 
-                    <div id="navbarMenuHeroA" class="navbar-menu">
-                        <div class="navbar-start">
-                            {% if current_user.is_authenticated %}
-                            <a href="{{ url_for('mod_dash.index') }}" class="navbar-item">
-                                Home
-                            </a>
-                            <a href="{{ url_for('auth.profile') }}" class="navbar-item">
-                                Profile
-                            </a>
-                            {% endif %}
-                        </div>
-                        <div class="navbar-end">
-                            {% if not current_user.is_authenticated %}
-                            <a href="{{ url_for('auth.login') }}" class="navbar-item">
-                                Login
-                            </a>
-                            <a href="{{ url_for('auth.signup') }}" class="navbar-item">
-                                Sign Up
-                            </a>
-                            {% endif %}
-                            {% if current_user.is_authenticated %}
-                            <a href="{{ url_for('auth.logout') }}" class="navbar-item">
-                                Logout
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </nav>
+    <nav class="navbar is-link is-fixed-top" role="navigation" aria-label="main navigation">
+            
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{{ url_for('mod_main.main') }}">
+              <img src="{{url_for('static', filename='logos/RMA_logo.png')}}" >
+            </a>
         </div>
+        <div id="navbarMenuHeroA" class="navbar-menu fadeIn animated faster">
+            {% if current_user.is_authenticated %}
+            <div class="navbar-start">
+                <div class="navbar-item has-text-white">
+                    <a class=" has-text-white" href="{{ url_for('auth.profile', user_id= current_user.id) }}"> <strong>{{current_user}} - {{get_role_name(current_user.role_id)}} </strong></a>
+                </div>
+            </div>
+            {% endif %}
 
-        <div class="container">
-            <div class="notification is-primary">
-                {% block content %}
-                {% endblock %}
+            <div class="navbar-end">
+                {% if not current_user.is_authenticated %}
+                    <a href="{{ url_for('auth.login') }}" class="navbar-item has-text-white">
+                        {{_('Login')}}
+                    </a>
+                    <a href="{{ url_for('auth.signup') }}" class="navbar-item has-text-white">
+                        {{_('Sign Up')}}
+                    </a>
+                {% endif %}
+                    
+                {% if current_user.is_authenticated %}
+                    <a title="Notifications" id="notification_button" class="navbar-item has-text-white">
+                        <span class="icon is-medium"><i class="fa-solid fa-bell"></i></span>
+                    </a>
+
+                    <a onclick="changeLanguage(event)" class="navbar-item has-text-white">
+                        <p class="block has-text-white ">
+                            <span class="icon is-medium">
+                                <i class="fa-solid fa-globe"></i>
+                            </span>
+                            <span>{{current_user.preffered_language | upper }}</span>
+                        </p>
+                    </a>
+                    <a title="Log out" href="{{ url_for('auth.logout') }}" class="navbar-item has-text-white">
+                        <span class="icon is-medium"><i class="fa-solid fa-arrow-right-from-bracket"></i></i></span>
+                    </a>
+                {% endif %}
+
+                <a href="{{ url_for('mod_main.user_guide') }}" title="User Guide" class="navbar-item has-text-white"> 
+                    <span class="icon is-medium"><i class="fas fa-info-circle"></i></span>            
+                </a>
             </div>
         </div>
-        
+    </nav>
+
+    <!-- Banners -->
+    {% with errors = get_flashed_messages(category_filter=['error']) %}
+    {% if errors %}
+    <div class="notification is-danger">
+        <button class="delete"></button>
+        {{ errors[0] }}
     </div>
+    {% endif %}
+    {% endwith %}
+
+    {% with messages = get_flashed_messages(category_filter=['success']) %}
+    {% if messages %}
+    <div class="notification is-success">
+        <button class="delete"></button>
+        {{ messages[0] }}
+    </div>
+    {% endif %}
+    {% endwith %}
+    <!--  -->
+
+
+
+    <section class="hero ">
+        <div class="hero-body">
+            <div class="tile is-ancestor">
+                <div class="tile is-vertical is-1">
+                    <div class="tile ">
+                        {% if current_user.is_authenticated %}
+                        <aside class="menu ">
+                            <p class="menu-label">
+                            General
+                            </p>
+                            <ul class="menu-list">
+                                <li><a href="{{ url_for('mod_main.main') }}">{{_('Dashboard')}}</a></li>
+                                <li><a href="{{ url_for('auth.profile', user_id= current_user.id) }}">{{_('Personal Page')}}</a></li>
+                            </ul>
+                            {% if current_user.is_administrator %}
+                            <p class="menu-label">
+                            {{_('Administration')}}
+                            </p>
+                            <ul class="menu-list">
+                            <li><a href="{{ url_for('admin.index') }}"><span class="icon is-medium"><i class="fa-solid fa-gear"></i></span>{{_('Administration Dashboard')}}</a></li>
+                            </ul>
+                            {% endif %}
+
+                        </aside>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="tile is-vertical">
+                    {% if current_user.is_authenticated %}
+                    <div class="columns">
+                        <div class="column">
+                            <h1 class="title is-1 has-text-centered"><p>{{title}}</p></h1>
+                        </div>
+                    </div>
+                    {% endif %}                 
+
+
+                    {% block content %}
+    
+                    {% endblock %}
+
+                </div>
+                <div  id="notifications" class="tile is-vertical is-1 is-hidden">
+                    <div class="tile ">
+                        <aside class="menu ">
+                            <div class="columns">
+                                <div class="column is-centered">
+                                    <button id="dismiss_button" class="button is-rounded">
+                                        <span class="icon"><i class="fa-regular fa-circle-xmark"></i></span>
+                                        <span>Dismiss </span> 
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            {% if current_user.is_authenticated %}
+                                {% set notifications = get_new_notifications_user(current_user.id) %}
+                                {% if notifications | length > 0 %}
+                                    {% for notification in notifications %}
+                                    <article class="media notification_article">
+                                        <div class="media-content">
+                                            <div class="content">
+                                            <p>
+                                                <strong>{{notification.type_not}}</strong> <small>{{notification.date_created.strftime('%Y-%m-%d') }}</small> 
+                                                <br>
+                                                {{notification.body}}
+                                            </p>
+                                            </div>
+
+                                        </div>
+                                        </article>
+                                    {% endfor %}
+                                {% else %}
+                                    <p> <strong> {{_('No new Notifications')}}</strong></p>
+
+
+                                {% endif %}
+                            {% endif %}
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+            <strong>Pitinfo</strong> {{_('is a software product developed by')}} <strong>  <a href="https://minebright.com" target="_blank" rel="noopener noreferrer">Minebright Inc.</a></strong>. 
+            {{_('For any questions contact by')}} <a href="mailto:info@minebright.com?subject=RMA: ">  Email</a>
+          </p>
+        </div>
+    </footer>
 </body>
 
+{% if current_user.is_authenticated %}
+<script>
+    function changeLanguage(ev) {
+      $.ajax({
+        method: 'POST',
+        url: {{ url_for('mod_main.change_preffered_language')| tojson }}
+      }).done(location.reload(true));
+    }
+  
+</script>
+{% endif %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+            const $notification = $delete.parentNode;
+
+            $delete.addEventListener('click', () => {
+                $notification.parentNode.removeChild($notification);
+            });
+        });
+    });
+    $('#notification_button').click(function() {
+        if ($('#notifications').hasClass('is-hidden')){
+            $('#notifications').removeClass('is-hidden');
+        } else {
+            $('#notifications').addClass('is-hidden');
+        }
+    });
+
+    $('#dismiss_button').click(function() {
+        $('.notification_article').addClass('is-hidden');
+        $.ajax({
+            method: 'POST',
+            url: {{ url_for('mod_notifications.dismiss_notifications', user_id= current_user.id)| tojson }}
+        });
+    });
+</script>
 
 </html>
