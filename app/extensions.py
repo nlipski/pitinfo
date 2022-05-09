@@ -26,7 +26,9 @@ from celery import Celery
 # Import SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 
+from flaskext.mysql import MySQL
 
+mysql = MySQL()
 talisman = Talisman()
 babel = Babel()
 mail = Mail()
@@ -80,10 +82,11 @@ def create_blueprints(app):
     from app.mod_main.controllers import mod_main
     from app.mod_request.controllers import mod_request
     from app.mod_notifications.controllers import mod_notifications
+    from app.mod_pit.controllers import mod_pit
 
     app.register_blueprint(mod_auth)
     app.register_blueprint(mod_main)
-
+    app.register_blueprint(mod_pit)
     app.register_blueprint(mod_request)
     app.register_blueprint(mod_notifications)
 

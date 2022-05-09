@@ -65,6 +65,6 @@ def create_app(config_name=None):
     # TODO: enable HTTPS support
     # initialize_web_security(app)
 
-    initialize_models(app, db)
+    # initialize_models(app, db)
 
     return app

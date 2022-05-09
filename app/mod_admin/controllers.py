@@ -6,8 +6,7 @@ from flask_admin import BaseView, expose, AdminIndexView
 
 from app.mod_auth.models import *
 from app.mod_request.models import *
-from app.mod_travel.models import *
-from app.mod_roster.models import *
+
 from app.mod_main.models import *
 
 import os
@@ -57,10 +56,10 @@ def create_admin_views(app, db):
     # Flask and Flask-SQLAlchemy initialization here
 
     admin = Admin(
-        app,
-        index_view=MyHomeView(),
-        name='Roster Management Application Admin',
-        template_mode='bootstrap4')
+            app,
+            index_view=MyHomeView(),
+            name='Application Admin',
+            template_mode='bootstrap4')
     admin.add_view(
         MyFileView(
             app.config['PATH_PERSONAL_FILES'],
@@ -160,52 +159,11 @@ def create_admin_views(app, db):
             category="Documents"))
     admin.add_view(
         MyModelView(
-            event_type_model,
-            db.session,
-            name="Event Types",
-            category="Travel"))
-    admin.add_view(
-        MyModelView(
-            event_model,
-            db.session,
-            name="Events",
-            category="Travel"))
-    admin.add_view(
-        MyModelView(
-            itinerary_choice_model,
-            db.session,
-            name="Itinerary Options",
-            category="Travel"))
-    admin.add_view(
-        MyModelView(
-            itinerary_model,
-            db.session,
-            name="Itineraries",
-            category="Travel"))
-    admin.add_view(
-        MyModelView(
-            itinerary_request_model,
-            db.session,
-            name="Employee Travel Requests",
-            category="Requests"))
-    admin.add_view(
-        MyModelView(
             deactivate_user_request_model,
             db.session,
             name="User Deactivation Requests",
             category="Requests"))
-    admin.add_view(
-        MyModelView(
-            roster_model,
-            db.session,
-            name="Rosters",
-            category="Roster"))
-    admin.add_view(
-        MyModelView(
-            roster_type_model,
-            db.session,
-            name="Roster Types",
-            category="Roster"))
+
     admin.add_view(
         MyModelView(
             issue_model,

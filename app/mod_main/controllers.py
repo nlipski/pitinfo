@@ -4,7 +4,6 @@ from flask import Blueprint, render_template, url_for, request, jsonify, flash
 from flask.sessions import NullSession
 from flask_login import login_required, current_user
 
-from app.mod_roster.graphing_utils import *
 from app.mod_request.controllers import *
 from app.mod_main.forms import *
 from app.mod_main.services import *
@@ -34,7 +33,6 @@ mod_main = Blueprint('mod_main', __name__)
 def main():
     main_dict = dict()
 
-    main_dict['rosters'] = generate_roster_chart()
     main_dict['requests'] = get_requests(0, current_user.id)
     return render_template('main/dashboard.html',
                            main_dict=main_dict,

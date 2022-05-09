@@ -8,23 +8,23 @@
       "value": "testing"
     },
     {
-      "name": "POSTGRES_DB",
+      "name": "DB_DB",
       "value": "postgres"
     },
     {
-      "name": "POSTGRES_USER",
+      "name": "DB_USER",
       "value": "postgres"
     },
     {
-      "name": "POSTGRES_HOSTNAME",
+      "name": "DB_HOSTNAME",
       "value": "localhost"
     },
     {
-      "name": "POSTGRES_PORT",
+      "name": "DB_PORT",
       "value": "5433"
     },
     {
-      "name": "POSTGRES_PASSWORD",
+      "name": "DB_PASSWORD",
       "value": "postgres"
     },
     {

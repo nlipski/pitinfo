@@ -6,15 +6,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 
 
-from app.models import db, migrate
+from app.models import db
 
-import json
 
 from app.mod_auth.forms import *
 from app.mod_request.forms import *
 
 from app.mod_auth.services import *
-from app.mod_roster.services import *
 from app.mod_request.controllers import *
 
 from app.mod_auth.models import *
@@ -254,7 +252,6 @@ def users_page():
     main_dict['users'] = get_all_users_under_a_manager(current_user)
     main_dict['genders'] = get_all_genders()
     main_dict['countries'] = get_all_countries()
-    main_dict['rosters'] = get_all_roster_types()
     main_dict['roles'] = get_all_roles()
     main_dict['sites'] = get_all_sites()
     main_dict['workgroups'] = get_all_workgroups()
