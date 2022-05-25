@@ -31,15 +31,15 @@ class Config(object):
     CELERY_BROKER_URL = os.environ["CELERY_BROKER_URL"]
     CELERY_RESULT_BACKEND = os.environ["CELERY_RESULT_BACKEND"]
 
-    user = os.environ["DB_USER"]
-    password = os.environ["DB_PASSWORD"]
-    hostname = os.environ["DB_HOSTNAME"]
-    port = os.environ["DB_PORT"]
+    user = os.environ["POSTGRES_USER"]
+    password = os.environ["POSTGRES_PASSWORD"]
+    hostname = os.environ["POSTGRES_HOSTNAME"]
+    port = os.environ["POSTGRES_PORT"]
     database = os.environ["APPLICATION_DB"]
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = (
-        f"mysql+pymysql://{user}:{password}@{hostname}:{port}/{database}"
+        f"postgresql+psycopg2://{user}:{password}@{hostname}:{port}/{database}"
     )
 
     # File upload configs

@@ -8,36 +8,28 @@
         "value": "development"
     },
     {
-        "name": "MYSQL_DATABASE",
-        "value": "mine_op"
+        "name": "POSTGRES_DB",
+        "value": "postgres_dev"
     },
     {
-        "name": "DB_USER",
-        "value": "root"
+        "name": "POSTGRES_USER",
+        "value": "postgres"
     },
     {
-        "name": "DB_HOSTNAME",
+        "name": "POSTGRES_HOSTNAME",
         "value": "localhost"
     },
     {
-        "name": "DB_PASSWORD",
-        "value": "root"
+        "name": "POSTGRES_PORT",
+        "value": "5432"
     },
     {
-        "name": "DB_ROOT_PASSWORD",
-        "value": "root"
-    },
-    {
-        "name": "DB_PORT",
-        "value": "3306"
-    },
-    {
-        "name": "DB_DB",
-        "value": "mine_op"
+        "name": "POSTGRES_PASSWORD",
+        "value": "postgres"
     },
     {
         "name": "APPLICATION_DB",
-        "value": "mine_op"
+        "value": "postgres_dev"
     },
     {
         "name": "SECRET_KEY",

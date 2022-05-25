@@ -5,18 +5,15 @@ services:
     image: redis:6-alpine
 
   db:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
+    image: postgres
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - "${DB_PORT}:3306"
+      - "${POSTGRES_PORT}:5432"
     volumes:
-      - ./docker/compose/dockerfiles/db/:/docker-entrypoint-initdb.d/
-      - ./dbdata:/var/lib/mysql
+      - pg_pitinfo_data:/var/lib/postgresql/data
 
   adminer:
     image: adminer
@@ -36,11 +33,10 @@ services:
       FLASK_CONFIG: ${FLASK_CONFIG}
 
       APPLICATION_DB: ${APPLICATION_DB}
-
-      MYSQL_USER: ${DB_USER}
-      MYSQL_HOSTNAME: "db"
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_PORT: ${DB_PORT}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_HOSTNAME: "db_rma_dev"
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_PORT: ${POSTGRES_PORT}
 
       SECRET_KEY: ${SECRET_KEY}
       MAPBOX_TOKEN: ${MAPBOX_TOKEN}
@@ -71,4 +67,4 @@ services:
 
 
 volumes:
-  dbdata:
+  pg_pitinfo_data:

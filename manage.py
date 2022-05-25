@@ -67,11 +67,11 @@ def docker_compose_cmdline(commands_string=None):
 
 def run_sql(statements):
     conn = psycopg2.connect(
-        dbname=os.getenv("DB_DB"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        host=os.getenv("DB_HOSTNAME"),
-        port=os.getenv("DB_PORT"),
+        dbname=os.getenv("POSTGRES_DB"),
+        user=os.getenv("POSTGRES_USER"),
+        password=os.getenv("POSTGRES_PASSWORD"),
+        host=os.getenv("POSTGRES_HOSTNAME"),
+        port=os.getenv("POSTGRES_PORT"),
     )
 
     conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)

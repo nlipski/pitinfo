@@ -26,9 +26,7 @@ from celery import Celery
 # Import SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 
-from flaskext.mysql import MySQL
 
-mysql = MySQL()
 talisman = Talisman()
 babel = Babel()
 mail = Mail()
@@ -122,9 +120,6 @@ def create_context_processor(app):
         def get_user_from_id(user_id):
             return get_user_by_id(user_id)
 
-        def get_profile_edit_request_dict(request_id):
-            return get_profile_edit_request_diffs(request_id)
-
         def get_manager_name_from_user_id(user_id):
             user = get_user_by_id(user_id)
             supervisor_id = user.supervisor_id
@@ -136,23 +131,6 @@ def create_context_processor(app):
         def get_user_name(user_id):
             user = get_user_by_id(user_id)
             return user.last_name + " " + user.first_name
-
-        def get_site_name(site_id):
-            site = get_site_by_id(site_id)
-            return site.name
-
-        def get_role_name(role_id):
-            role = get_role_from_id(role_id)
-            return role.name
-
-        def get_workgroup_name(workgroup_id):
-            workgroup = get_workgroup_by_id(workgroup_id)
-            return workgroup.name
-
-        def get_document_type_name(document_type_id):
-            document_type = get_document_type_by_id(document_type_id)
-            return document_type.name
-
 
         def get_new_notifications_user(user_id):
             user = get_user_by_id(user_id)
@@ -166,14 +144,10 @@ def create_context_processor(app):
             return date.today().strftime('%Y-%m-%d')
 
         return dict(
-            get_profile_edit_request_dict=get_profile_edit_request_dict,
+
             get_user_name=get_user_name,
             get_user_from_id=get_user_from_id,
             get_manager_name_from_user_id=get_manager_name_from_user_id,
-            get_site_name=get_site_name,
-            get_role_name=get_role_name,
-            get_workgroup_name=get_workgroup_name,
-            get_document_type_name=get_document_type_name,
             get_new_notifications_user=get_new_notifications_user,
             get_todays_date=get_todays_date)
 
