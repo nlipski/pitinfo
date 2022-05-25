@@ -11,7 +11,7 @@ Base = declarative_base()
 metadata = Base.metadata
 
 
-class Activitytype(Base):
+class Activitytype(db.Model):
     __tablename__ = 'activitytype'
 
     id = Column(Integer, primary_key=True, comment='Types of activities: load and haul, drilling, blasting.')
@@ -21,7 +21,7 @@ class Activitytype(Base):
     modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class Company(Base):
+class Company(db.Model):
     __tablename__ = 'company'
 
     id = Column(Integer, primary_key=True)
@@ -31,7 +31,7 @@ class Company(Base):
     modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class Consclas(Base):
+class Consclas(db.Model):
     __tablename__ = 'consclass'
 
     id = Column(Integer, primary_key=True)
@@ -40,7 +40,7 @@ class Consclas(Base):
     modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class Department(Base):
+class Department(db.Model):
     __tablename__ = 'department'
 
     id = Column(Integer, primary_key=True)
@@ -50,7 +50,7 @@ class Department(Base):
     modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class Dwnclas(Base):
+class Dwnclas(db.Model):
     __tablename__ = 'dwnclass'
 
     id = Column(Integer, primary_key=True)
@@ -60,7 +60,7 @@ class Dwnclas(Base):
     modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class Firingtype(Base):
+class Firingtype(db.Model):
     __tablename__ = 'firingtype'
 
     id = Column(Integer, primary_key=True)
@@ -69,7 +69,7 @@ class Firingtype(Base):
     modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class Locationug(Base):
+class Locationug(db.Model):
     __tablename__ = 'locationug'
 
     id = Column(Integer, primary_key=True, comment='The material source locations by pit, stage, RL, blast, block, flitch.')
@@ -86,7 +86,7 @@ class Locationug(Base):
     modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class Material(Base):
+class Material(db.Model):
     __tablename__ = 'material'
 
     id = Column(Integer, primary_key=True, comment='The grade categorization for ore and waste.')
@@ -95,7 +95,7 @@ class Material(Base):
     modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class Measure(Base):
+class Measure(db.Model):
     __tablename__ = 'measure'
 
     id = Column(Integer, primary_key=True)
@@ -108,7 +108,7 @@ class Measure(Base):
     measure_col = Column(String(45))
 
 
-class Oxidation(Base):
+class Oxidation(db.Model):
     __tablename__ = 'oxidation'
 
     id = Column(Integer, primary_key=True)
@@ -117,7 +117,7 @@ class Oxidation(Base):
     modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class Pit(Base):
+class Pit(db.Model):
     __tablename__ = 'pit'
 
     id = Column(Integer, primary_key=True, comment='The material source locations by pit, stage, RL, blast, block, flitch.')
@@ -128,7 +128,7 @@ class Pit(Base):
     pit = Column(String(45), nullable=False)
 
 
-class Plantclas(Base):
+class Plantclas(db.Model):
     __tablename__ = 'plantclass'
 
     id = Column(Integer, primary_key=True)
@@ -138,7 +138,7 @@ class Plantclas(Base):
     modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class Stockpile(Base):
+class Stockpile(db.Model):
     __tablename__ = 'stockpile'
 
     id = Column(Integer, primary_key=True, comment='The material source locations by pit, stage, RL, blast, block, flitch.')
@@ -150,7 +150,7 @@ class Stockpile(Base):
     rom = Column(TINYINT, nullable=False, comment='is the stockpile on the ROM or not?')
 
 
-class Constype(Base):
+class Constype(db.Model):
     __tablename__ = 'constype'
 
     id = Column(Integer, primary_key=True)
@@ -162,7 +162,7 @@ class Constype(Base):
     consclass = relationship('Consclas')
 
 
-class Dwntype(Base):
+class Dwntype(db.Model):
     __tablename__ = 'dwntype'
 
     id = Column(Integer, primary_key=True)
@@ -179,7 +179,7 @@ class Dwntype(Base):
     dwnclass = relationship('Dwnclas')
 
 
-class Locationop(Base):
+class Locationop(db.Model):
     __tablename__ = 'locationop'
 
     id = Column(Integer, primary_key=True, comment='The material source locations by pit, stage, RL, blast, block, flitch.')
@@ -197,7 +197,7 @@ class Locationop(Base):
     pit1 = relationship('Pit')
 
 
-class Person(Base):
+class Person(db.Model):
     __tablename__ = 'person'
 
     id = Column(Integer, primary_key=True)
@@ -211,7 +211,7 @@ class Person(Base):
     company = relationship('Company')
 
 
-class Planttype(Base):
+class Planttype(db.Model):
     __tablename__ = 'planttype'
 
     id = Column(Integer, primary_key=True)
@@ -224,7 +224,7 @@ class Planttype(Base):
     plantclass = relationship('Plantclas')
 
 
-class Role(Base):
+class Role(db.Model):
     __tablename__ = 'role'
 
     id = Column(Integer, primary_key=True)
@@ -238,7 +238,7 @@ class Role(Base):
     department = relationship('Department')
 
 
-class Budget(Base):
+class Budget(db.Model):
     __tablename__ = 'budget'
 
     id = Column(Integer, primary_key=True)
@@ -264,7 +264,7 @@ class Budget(Base):
     stockpile = relationship('Stockpile')
 
 
-class Consumable(Base):
+class Consumable(db.Model):
     __tablename__ = 'consumable'
 
     id = Column(Integer, primary_key=True)
@@ -279,7 +279,7 @@ class Consumable(Base):
     constype = relationship('Constype')
 
 
-class Parcel(Base):
+class Parcel(db.Model):
     __tablename__ = 'parcel'
 
     id = Column(Integer, primary_key=True, comment='Parcel is a dig block in the open pit setting.')
@@ -298,7 +298,7 @@ class Parcel(Base):
     oxidation = relationship('Oxidation')
 
 
-class Plant(Base):
+class Plant(db.Model):
     __tablename__ = 'plant'
 
     id = Column(Integer, primary_key=True)
@@ -313,7 +313,7 @@ class Plant(Base):
     planttype = relationship('Planttype')
 
 
-class Rolehist(Base):
+class Rolehist(db.Model):
     __tablename__ = 'rolehist'
 
     id = Column(Integer, primary_key=True)
@@ -328,7 +328,7 @@ class Rolehist(Base):
     role = relationship('Role')
 
 
-class Shiftactivity(Base):
+class Shiftactivity(db.Model):
     __tablename__ = 'shiftactivity'
 
     id = Column(Integer, primary_key=True, comment='The truck counts table.')
@@ -348,7 +348,7 @@ class Shiftactivity(Base):
     person1 = relationship('Person', primaryjoin='Shiftactivity.supervisor == Person.id')
 
 
-class Survey(Base):
+class Survey(db.Model):
     __tablename__ = 'survey'
 
     id = Column(Integer, primary_key=True)
@@ -360,7 +360,7 @@ class Survey(Base):
     location = relationship('Locationop')
 
 
-class Truckfactor(Base):
+class Truckfactor(db.Model):
     __tablename__ = 'truckfactor'
 
     id = Column(Integer, primary_key=True, comment='Types of activities: load and haul, drilling, blasting.')
@@ -374,7 +374,7 @@ class Truckfactor(Base):
     planttype = relationship('Planttype')
 
 
-class Brokenstock(Base):
+class Brokenstock(db.Model):
     __tablename__ = 'brokenstock'
 
     id = Column(Integer, primary_key=True, comment='Do we need to add a depletion id?')
@@ -390,7 +390,7 @@ class Brokenstock(Base):
     parcel = relationship('Parcel')
 
 
-class Downtime(Base):
+class Downtime(db.Model):
     __tablename__ = 'downtime'
 
     id = Column(Integer, primary_key=True)
@@ -409,7 +409,7 @@ class Downtime(Base):
     plant = relationship('Plant')
 
 
-class Drilling(Base):
+class Drilling(db.Model):
     __tablename__ = 'drilling'
 
     id = Column(Integer, primary_key=True, comment='Do we need to add a depletion id?')
@@ -431,7 +431,7 @@ class Drilling(Base):
     parcel = relationship('Parcel')
 
 
-class Evaluation(Base):
+class Evaluation(db.Model):
     __tablename__ = 'evaluation'
 
     id = Column(Integer, primary_key=True)
@@ -450,7 +450,7 @@ class Evaluation(Base):
     parcel = relationship('Parcel')
 
 
-class Grade(Base):
+class Grade(db.Model):
     __tablename__ = 'grade'
 
     id = Column(Integer, primary_key=True, comment='The grades for each parcel (dig block). Many-to-1 because you could be analyzing for multiple metals.\\n\\nDiluted grade is calculated off of the truck counts (over mining). Do some sites have dilution in the block model?')
@@ -465,7 +465,7 @@ class Grade(Base):
     parcel = relationship('Parcel')
 
 
-class Loadhaul(Base):
+class Loadhaul(db.Model):
     __tablename__ = 'loadhaul'
 
     id = Column(Integer, primary_key=True, comment='The truck counts table.')
@@ -487,7 +487,7 @@ class Loadhaul(Base):
     planthours = relationship('Planthour', secondary='planthour_has_loadhaul')
 
 
-class Firing(Base):
+class Firing(db.Model):
     __tablename__ = 'firing'
 
     id = Column(Integer, primary_key=True, comment='Do we need to add a depletion id?')
@@ -514,7 +514,7 @@ class Firing(Base):
     location = relationship('Locationop')
 
 
-class Stockpilebalance(Base):
+class Stockpilebalance(db.Model):
     __tablename__ = 'stockpilebalance'
 
     id = Column(Integer, primary_key=True)
@@ -531,7 +531,7 @@ class Stockpilebalance(Base):
     location = relationship('Locationop')
 
 
-class Consfiring(Base):
+class Consfiring(db.Model):
     __tablename__ = 'consfiring'
 
     id = Column(Integer, primary_key=True)
@@ -545,7 +545,7 @@ class Consfiring(Base):
     firing = relationship('Firing')
 
 
-class Measfiring(Base):
+class Measfiring(db.Model):
     __tablename__ = 'measfiring'
 
     id = Column(Integer, primary_key=True)
@@ -559,7 +559,7 @@ class Measfiring(Base):
     measure = relationship('Measure')
 
 
-class Planthour(Base):
+class Planthour(db.Model):
     __tablename__ = 'planthour'
 
     id = Column(Integer, primary_key=True)
