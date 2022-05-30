@@ -50,6 +50,33 @@ class Config(object):
     LANGUAGES = {'en_US': 'English',
                  'fr_FR': 'French'}
 
+
+    PATH_PERSONAL_FILES = op.join(
+        op.dirname(__file__), 'data', 'personal_files')
+    PATH_INIT_MODELS = op.join(op.dirname(__file__), 'data_types')
+
+
+class ProductionConfig(Config):
+    """Production configuration"""
+    DEBUG = False
+        # Mailing config parameters
+    # The actual values should be different for testing, development, and
+    # production
+    MAIL_SERVER = os.environ['MAIL_SERVER']
+    MAIL_PORT = int(os.environ['MAIL_PORT'] or 25)
+    MAIL_USE_TLS = os.environ['MAIL_USE_TLS'] == "True"
+    MAIL_USE_SSL = os.environ['MAIL_USE_SSL'] == "True"
+    MAIL_USERNAME = os.environ['MAIL_USERNAME']
+    MAIL_PASSWORD = os.environ['MAIL_PASSWORD']
+    MAIL_DEFAULT_SENDER = os.environ['MAIL_DEFAULT_SENDER'] or os.environ['MAIL_USERNAME']
+
+
+
+class DevelopmentConfig(Config):
+    """Development configuration"""
+    DEVELOPMENT = True
+    DEBUG = True
+
     # Mailing config parameters
     # The actual values should be different for testing, development, and
     # production
@@ -61,20 +88,6 @@ class Config(object):
     MAIL_PASSWORD = os.environ['MAIL_PASSWORD']
     MAIL_DEFAULT_SENDER = os.environ['MAIL_DEFAULT_SENDER'] or os.environ['MAIL_USERNAME']
 
-    PATH_PERSONAL_FILES = op.join(
-        op.dirname(__file__), 'data', 'personal_files')
-    PATH_INIT_MODELS = op.join(op.dirname(__file__), 'data_types')
-
-
-class ProductionConfig(Config):
-    """Production configuration"""
-    DEBUG = False
-
-
-class DevelopmentConfig(Config):
-    """Development configuration"""
-    DEVELOPMENT = True
-    DEBUG = True
 
 
 class TestingConfig(Config):

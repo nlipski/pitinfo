@@ -1,6 +1,6 @@
 # coding: utf-8
-from sqlalchemy import Column, DECIMAL, DateTime, ForeignKey, Integer, String, Table, text
-from sqlalchemy.dialects.mysql import TINYINT
+from sqlalchemy import Column, DECIMAL, DateTime, ForeignKey, Integer, String, Table, text, Boolean, func
+
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from app.models import db
@@ -17,8 +17,9 @@ class Activitytype(db.Model):
     id = Column(Integer, primary_key=True, comment='Types of activities: load and haul, drilling, blasting.')
     name = Column(String(45), nullable=False)
     comment = Column(String(45))
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
 
 class Company(db.Model):
@@ -26,9 +27,10 @@ class Company(db.Model):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
-    active = Column(TINYINT, nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    active = Column(Boolean, nullable=False)
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
 
 class Consclas(db.Model):
@@ -36,8 +38,9 @@ class Consclas(db.Model):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
 
 class Department(db.Model):
@@ -45,9 +48,10 @@ class Department(db.Model):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
-    active = Column(TINYINT, nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    active = Column(Boolean, nullable=False)
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
 
 class Dwnclas(db.Model):
@@ -55,19 +59,19 @@ class Dwnclas(db.Model):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
-    active = Column(TINYINT, nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
-
+    active = Column(Boolean, nullable=False)
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
 class Firingtype(db.Model):
     __tablename__ = 'firingtype'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
-
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
 class Locationug(db.Model):
     __tablename__ = 'locationug'
@@ -82,17 +86,18 @@ class Locationug(db.Model):
     detail5 = Column(String(45))
     detail6 = Column(String(45))
     comment = Column(String(45))
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
-
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
 class Material(db.Model):
     __tablename__ = 'material'
 
     id = Column(Integer, primary_key=True, comment='The grade categorization for ore and waste.')
     name = Column(String(45), nullable=False, comment='Grade bins. ')
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
 
 class Measure(db.Model):
@@ -103,8 +108,9 @@ class Measure(db.Model):
     description = Column(String(150), nullable=False)
     unit = Column(String(45), nullable=False)
     type = Column(String(45), nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     measure_col = Column(String(45))
 
 
@@ -113,8 +119,9 @@ class Oxidation(db.Model):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
 
 class Pit(db.Model):
@@ -123,9 +130,9 @@ class Pit(db.Model):
     id = Column(Integer, primary_key=True, comment='The material source locations by pit, stage, RL, blast, block, flitch.')
     name = Column(String(45), nullable=False)
     comment = Column(String(45))
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
-    pit = Column(String(45), nullable=False)
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
 
 class Plantclas(db.Model):
@@ -133,9 +140,10 @@ class Plantclas(db.Model):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
-    active = Column(TINYINT, nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    active = Column(Boolean, nullable=False)
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
 
 class Stockpile(db.Model):
@@ -144,10 +152,11 @@ class Stockpile(db.Model):
     id = Column(Integer, primary_key=True, comment='The material source locations by pit, stage, RL, blast, block, flitch.')
     name = Column(String(45), nullable=False)
     comment = Column(String(45))
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
-    ore = Column(TINYINT, nullable=False, comment='is it an ore stockpile or a waste dump?')
-    rom = Column(TINYINT, nullable=False, comment='is the stockpile on the ROM or not?')
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
+    ore = Column(Boolean, nullable=False, comment='is it an ore stockpile or a waste dump?')
+    rom = Column(Boolean, nullable=False, comment='is the stockpile on the ROM or not?')
 
 
 class Constype(db.Model):
@@ -155,8 +164,9 @@ class Constype(db.Model):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     consclass_id = Column(ForeignKey('consclass.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
 
     consclass = relationship('Consclas')
@@ -167,14 +177,15 @@ class Dwntype(db.Model):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
-    active = Column(TINYINT, nullable=False)
-    stand = Column(TINYINT, nullable=False)
-    maintenance = Column(TINYINT, nullable=False)
-    planned = Column(TINYINT, nullable=False)
-    ops = Column(TINYINT, nullable=False)
+    active = Column(Boolean, nullable=False)
+    stand = Column(Boolean, nullable=False)
+    maintenance = Column(Boolean, nullable=False)
+    planned = Column(Boolean, nullable=False)
+    ops = Column(Boolean, nullable=False)
     dwnclass_id = Column(ForeignKey('dwnclass.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
     dwnclass = relationship('Dwnclas')
 
@@ -185,8 +196,9 @@ class Locationop(db.Model):
     id = Column(Integer, primary_key=True, comment='The material source locations by pit, stage, RL, blast, block, flitch.')
     name = Column(String(45), nullable=False)
     comment = Column(String(45))
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     pit = Column(ForeignKey('pit.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     stage = Column(String(45), nullable=False)
     rl = Column(String(45), nullable=False)
@@ -204,8 +216,9 @@ class Person(db.Model):
     name = Column(String(45), nullable=False)
     login = Column(String(45), nullable=False)
     employee_number = Column(String(45), nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     company_id = Column(ForeignKey('company.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
 
     company = relationship('Company')
@@ -216,9 +229,10 @@ class Planttype(db.Model):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
-    active = Column(TINYINT, nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    active = Column(Boolean, nullable=False)
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     plantclass_id = Column(ForeignKey('plantclass.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
 
     plantclass = relationship('Plantclas')
@@ -229,10 +243,11 @@ class Role(db.Model):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
-    active = Column(TINYINT, nullable=False)
-    shift_boss = Column(TINYINT, nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    active = Column(Boolean, nullable=False)
+    shift_boss = Column(Boolean, nullable=False)
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     department_id = Column(ForeignKey('department.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
 
     department = relationship('Department')
@@ -250,8 +265,9 @@ class Budget(db.Model):
     metal = Column(DECIMAL(10, 0), nullable=False)
     drillm = Column(DECIMAL(10, 0))
     lhrate = Column(DECIMAL(10, 0))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     comment = Column(String(45))
     stockpile_id = Column(ForeignKey('stockpile.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     locationop_id = Column(ForeignKey('locationop.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
@@ -270,10 +286,11 @@ class Consumable(db.Model):
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
     supplier = Column(String(45))
-    explosive = Column(TINYINT, nullable=False)
-    active = Column(TINYINT, nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    explosive = Column(Boolean, nullable=False)
+    active = Column(Boolean, nullable=False)
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     constype_id = Column(ForeignKey('constype.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
 
     constype = relationship('Constype')
@@ -289,8 +306,9 @@ class Parcel(db.Model):
     location_id = Column(ForeignKey('locationop.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     material_id = Column(ForeignKey('material.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     oxidation_id = Column(ForeignKey('oxidation.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     evaluations_id = Column(Integer, nullable=False)
 
     location = relationship('Locationop')
@@ -303,9 +321,10 @@ class Plant(db.Model):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
-    active = Column(TINYINT, nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    active = Column(Boolean, nullable=False)
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     start = Column(DateTime, nullable=False)
     retired = Column(DateTime)
     planttype_id = Column(ForeignKey('planttype.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
@@ -321,8 +340,9 @@ class Rolehist(db.Model):
     end = Column(DateTime, nullable=False)
     role_id = Column(ForeignKey('role.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     person_id = Column(ForeignKey('person.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
     person = relationship('Person')
     role = relationship('Role')
@@ -334,8 +354,9 @@ class Shiftactivity(db.Model):
     id = Column(Integer, primary_key=True, comment='The truck counts table.')
     start = Column(DateTime, nullable=False)
     end = Column(DateTime, nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     comments = Column(String(45))
     shiftboss = Column(ForeignKey('person.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     activity_id = Column(ForeignKey('activitytype.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
@@ -366,8 +387,9 @@ class Truckfactor(db.Model):
     id = Column(Integer, primary_key=True, comment='Types of activities: load and haul, drilling, blasting.')
     name = Column(String(45), nullable=False)
     comment = Column(String(45))
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     factor = Column(DECIMAL(10, 0), nullable=False)
     planttype_id = Column(ForeignKey('planttype.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
 
@@ -381,8 +403,9 @@ class Brokenstock(db.Model):
     date = Column(DateTime, nullable=False)
     bcm = Column(DECIMAL(10, 0), nullable=False)
     tonnes = Column(DECIMAL(10, 0), nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     comment = Column(String(45))
     ounces = Column(DECIMAL(10, 0), nullable=False)
     parcel_id = Column(ForeignKey('parcel.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
@@ -396,12 +419,13 @@ class Downtime(db.Model):
     id = Column(Integer, primary_key=True)
     start = Column(DateTime, nullable=False)
     end = Column(DateTime, nullable=False)
-    usable = Column(TINYINT, nullable=False)
+    usable = Column(Boolean, nullable=False)
     dwntype_id = Column(ForeignKey('dwntype.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     location_id = Column(ForeignKey('locationop.id', ondelete='CASCADE', onupdate='CASCADE'), index=True)
     comment = Column(String(45))
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     plant_id = Column(ForeignKey('plant.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
 
     dwntype = relationship('Dwntype')
@@ -420,11 +444,12 @@ class Drilling(db.Model):
     hole_diameter = Column(DECIMAL(10, 0), nullable=False)
     azimuth = Column(Integer, nullable=False)
     dip = Column(Integer)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     comment = Column(String(45))
     parcel_id = Column(ForeignKey('parcel.id', ondelete='CASCADE', onupdate='CASCADE'), index=True)
-    redrill = Column(TINYINT, nullable=False, server_default=text("'0'"))
+    redrill = Column(Boolean, nullable=False, server_default=text("'0'"))
     drilling_col = Column(String(45))
     patternid = Column(String(45))
 
@@ -437,15 +462,16 @@ class Evaluation(db.Model):
     id = Column(Integer, primary_key=True)
     date = Column(DateTime, nullable=False)
     type = Column(String(45), nullable=False)
-    preferred = Column(TINYINT, nullable=False, server_default=text("'1'"))
+    preferred = Column(Boolean, nullable=False, server_default=text("'1'"))
     bcm_undiluted = Column(DECIMAL(10, 0), nullable=False)
     bcm_diluted = Column(DECIMAL(10, 0), nullable=False)
     tonnes_undiluted = Column(DECIMAL(10, 0), nullable=False)
     tonnes_diluted = Column(DECIMAL(10, 0), nullable=False)
     moisture = Column(DECIMAL(10, 0))
     parcel_id = Column(ForeignKey('parcel.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
     parcel = relationship('Parcel')
 
@@ -458,12 +484,19 @@ class Grade(db.Model):
     analyte = Column(String(45), nullable=False)
     grade = Column(DECIMAL(10, 0), nullable=False)
     diluted = Column(DECIMAL(10, 0), nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     parcel_id = Column(ForeignKey('parcel.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
 
     parcel = relationship('Parcel')
 
+
+planthour_has_loadhaul = Table(
+    'planthour_has_loadhaul', metadata,
+    Column('planthour_id', ForeignKey('planthour.id', ondelete='CASCADE', onupdate='CASCADE'), primary_key=True, nullable=False, index=True),
+    Column('loadhaul_id', ForeignKey('loadhaul.id', ondelete='CASCADE', onupdate='CASCADE'), primary_key=True, nullable=False, index=True)
+)
 
 class Loadhaul(db.Model):
     __tablename__ = 'loadhaul'
@@ -478,13 +511,14 @@ class Loadhaul(db.Model):
     tonnes = Column(DECIMAL(10, 0), nullable=False)
     ounces = Column(DECIMAL(10, 0), nullable=False)
     source = Column(ForeignKey('parcel.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True, comment='Source.')
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     destination = Column(ForeignKey('stockpile.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
 
     stockpile = relationship('Stockpile')
     parcel = relationship('Parcel')
-    planthours = relationship('Planthour', secondary='planthour_has_loadhaul')
+    # planthours = relationship('Planthour', secondary='planthour_has_loadhaul')
 
 
 class Firing(db.Model):
@@ -498,8 +532,9 @@ class Firing(db.Model):
     maters_adv_adj = Column(DECIMAL(10, 0), nullable=False)
     tonnes_fired = Column(DECIMAL(10, 0), nullable=False)
     bcm_fired = Column(DECIMAL(10, 0), nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     comment = Column(String(45))
     firingtype_id = Column(ForeignKey('firingtype.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     location_id = Column(ForeignKey('locationop.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
@@ -536,8 +571,9 @@ class Consfiring(db.Model):
 
     id = Column(Integer, primary_key=True)
     quantity = Column(String(45), nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     consumable_id = Column(ForeignKey('consumable.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     firing_id = Column(ForeignKey('firing.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
 
@@ -550,8 +586,9 @@ class Measfiring(db.Model):
 
     id = Column(Integer, primary_key=True)
     quantity = Column(String(45), nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     measure_id = Column(ForeignKey('measure.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     firing_id = Column(ForeignKey('firing.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
 
@@ -568,8 +605,9 @@ class Planthour(db.Model):
     starthour = Column(DECIMAL(10, 0), nullable=False)
     endhour = Column(DECIMAL(10, 0), nullable=False)
     comment = Column(String(45))
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     plant_id = Column(ForeignKey('plant.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     drilling_id = Column(ForeignKey('drilling.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     person_id = Column(ForeignKey('person.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
@@ -583,8 +621,3 @@ class Planthour(db.Model):
     shiftactivity = relationship('Shiftactivity')
 
 
-t_planthour_has_loadhaul = Table(
-    'planthour_has_loadhaul', metadata,
-    Column('planthour_id', ForeignKey('planthour.id', ondelete='CASCADE', onupdate='CASCADE'), primary_key=True, nullable=False, index=True),
-    Column('loadhaul_id', ForeignKey('loadhaul.id', ondelete='CASCADE', onupdate='CASCADE'), primary_key=True, nullable=False, index=True)
-)

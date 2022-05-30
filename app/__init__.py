@@ -49,6 +49,7 @@ def create_app(config_name=None):
 
     with app.app_context():
         from app.mod_auth import models
+        from app.mod_pit import models
         db.create_all()
 
     create_context_processor(app)

@@ -2,15 +2,11 @@ version: '3.4'
 
 services:
   db:
-  image: mysql:latest
-  restart: always
-  environment:
-    MYSQL_DATABASE: ${MYSQL_DATABASE}
-    MYSQL_USER: ${MYSQL_USER}
-    MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    image: postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT}:5432"
 
-  ports:
-    - "${MYSQL_PORT}:3306"
-  volumes:
-    - pgdata:/var/lib/mysql/data

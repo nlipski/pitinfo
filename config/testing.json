@@ -8,28 +8,28 @@
       "value": "testing"
     },
     {
-      "name": "DB_DB",
+      "name": "POSTGRES_DB",
       "value": "postgres"
     },
     {
-      "name": "DB_USER",
-      "value": "postgres"
+        "name": "POSTGRES_USER",
+        "value": "postgres"
     },
     {
-      "name": "DB_HOSTNAME",
-      "value": "localhost"
+        "name": "POSTGRES_HOSTNAME",
+        "value": "localhost"
     },
     {
-      "name": "DB_PORT",
-      "value": "5433"
+        "name": "POSTGRES_PORT",
+        "value": "5433"
     },
     {
-      "name": "DB_PASSWORD",
-      "value": "postgres"
+        "name": "POSTGRES_PASSWORD",
+        "value": "postgres"
     },
     {
-      "name": "APPLICATION_DB",
-      "value": "test"
+        "name": "APPLICATION_DB",
+        "value": "test"
     },
     {
         "name": "SECRET_KEY",
@@ -50,5 +50,37 @@
     {
         "name": "CELERY_RESULT_BACKEND",
         "value": "redis://redis:6379/0"
+    },
+    {
+      "name": "MAIL_SERVER",
+      "value": ""
+    },
+    {
+        "name": "MAIL_DEBUG",
+        "value": "1"
+    },
+    {
+        "name": "MAIL_PORT",
+        "value": "000"
+    },
+    {
+        "name": "MAIL_USE_TLS",
+        "value": "True"
+    },
+    {
+        "name": "MAIL_USE_SSL",
+        "value": "False"
+    },
+    {
+        "name": "MAIL_USERNAME",
+        "value": ""
+    },
+    {
+        "name": "MAIL_PASSWORD",
+        "value": ""
+    },
+    {
+        "name": "MAIL_DEFAULT_SENDER",
+        "value": ""
     }
   ]
