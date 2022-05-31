@@ -202,17 +202,10 @@ class Pit_model(db.Model):
 
     id = Column(Integer, primary_key=True, comment='The material source locations by pit, stage, RL, blast, block, flitch.')
     name = Column(String(45), nullable=False)
-<<<<<<< HEAD
-    comment = Column(String(45))
+    comment = Column(String(45), nullable=True)
     date_created = Column(DateTime, default=func.current_timestamp())
     date_modified = db.Column(DateTime, default=func.current_timestamp(),
                               onupdate=func.current_timestamp())
-=======
-    comment = Column(String(45), nullable=True)
-
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
->>>>>>> bbff0c7 ([mod_pit] - update DB)
 
 
 class Plant_class_model(db.Model):
@@ -221,14 +214,9 @@ class Plant_class_model(db.Model):
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
     active = Column(Boolean, nullable=False)
-<<<<<<< HEAD
     date_created = Column(DateTime, default=func.current_timestamp())
     date_modified = db.Column(DateTime, default=func.current_timestamp(),
                               onupdate=func.current_timestamp())
-=======
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
->>>>>>> bbff0c7 ([mod_pit] - update DB)
 
 
 class Plant_type_model(db.Model):

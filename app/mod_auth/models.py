@@ -96,14 +96,6 @@ class user_model(UserMixin, db.Model):
     def is_authenticated(self):
         return self.status == 1
 
-    # TODO: remove this manager workaround
-    @property
-    def is_manager(self):
-        from app.mod_auth.services import get_user_current_role
-        role = get_user_current_role(self)
-        if role is None:
-            return False
-        return role.name == "manager"
 
     # TODO: remove this administrator workaround
     @property
