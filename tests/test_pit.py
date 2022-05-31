@@ -88,6 +88,7 @@ def test__parcel_oz(database):
     block = "test block"
     flitch = ""
     create_location(database, name = name, pit = location_pit, stage = stage, rl = rl, blast = blast, block = block)    
+    location = Locationop.query.first()
     
     #create the material and oxidation
     name = "test material"
@@ -97,6 +98,8 @@ def test__parcel_oz(database):
     create_oxidation(name = name)
     oxidation = Oxidation_model.query.first()
 
+
+    #create parcel
     sg = 2.60
     bcm_undiluted = 10000
     bcm_diluted = 9000
@@ -114,6 +117,12 @@ def test__parcel_oz(database):
 
     ###make sure this one works!!
     parcel_grade = Grade_model.query.filter_by(id = parcel.id).first()
+
+    oz = tonnes_diluted * parcel_grade
+
+    assert oz > 0
+
+
 
 
 def test__create_stockpile(database):
