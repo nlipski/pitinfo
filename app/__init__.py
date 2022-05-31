@@ -12,8 +12,7 @@ import errno
 def create_app(config_name=None):
     from app.extensions import create_data_directories, create_celery, create_error_handler,\
         create_login_manager, create_blueprints, create_context_processor,\
-        create_admin_views, initialize_babel, initialize_mail_server,\
-        initialize_models
+        create_admin_views, initialize_babel, initialize_mail_server
     from app.extensions import migrate
 
     if config_name is None:

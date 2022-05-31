@@ -253,23 +253,6 @@ def get_all_roles():
 """ Work group Helpers """
 
 
-def get_workgroup_history_from_user_id(user_id):
-    workgroups = workgroup_history_model.query.filter_by(user_id=user_id).all()
-    if workgroups is None:
-        workgroups = []
-    return workgroups
-
-
-def get_workgroup_by_id(id):
-    return workgroup_model.query.filter_by(id=id).first()
-
-
-def get_user_current_workgroup(user):
-
-    if user.workgroup_id is None:
-        return
-
-    return get_workgroup_by_id(user.workgroup_id)
 
 
 def assign_user_new_workgroup(user, workgroup):

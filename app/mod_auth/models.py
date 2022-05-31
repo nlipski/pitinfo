@@ -42,8 +42,6 @@ class user_model(UserMixin, db.Model):
     phone_mobile_2 = db.Column(db.String(50), nullable=True)
     phone_home = db.Column(db.String(50), nullable=True)
 
-    contacts = db.relationship('contact_model', backref='user', lazy='dynamic')
-
     # Personal address
     address = db.Column(db.String(50), nullable=True)
     country = db.Column(db.String(50), nullable=True)

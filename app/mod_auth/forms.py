@@ -115,15 +115,6 @@ class NewUserForm(FlaskForm):
         'Date Commenced',
         format='%Y-%m-%d',
         default=datetime.now())
-    site_id = QuerySelectField(
-        query_factory=site_select_factory,
-        allow_blank=False)
-    workgroup_id = QuerySelectField(
-        query_factory=workgroup_select_factory,
-        allow_blank=False)
-    role_id = QuerySelectField(
-        query_factory=role_select_factory,
-        allow_blank=False)
     supervisor = QuerySelectField(
         query_factory=user_select_factory,
         allow_blank=False)
@@ -134,39 +125,6 @@ class NewUserForm(FlaskForm):
     submit = SubmitField('Submit')
 
 
-class DocumentForm(FlaskForm):
-    file_name = StringField('Document Name')
-    expiration_date = DateField(
-        'Document Expiration Date',
-        format='%Y-%m-%d',
-        default=datetime.now())
-    file = FileField('Document file')
-    file_type = QuerySelectField(
-        query_factory=documet_select_factory,
-        allow_blank=False)
-    submit = SubmitField('Upload')
-
-
-class NewUserRoleForm(FlaskForm):
-    role = QuerySelectField(
-        query_factory=role_select_factory,
-        allow_blank=True,
-        blank_text='Select a new Role...')
-    confirm_role = BooleanField(
-        "Confirm the selection", [
-            validators.InputRequired()])
-    submit = SubmitField('Select Role')
-
-
-class NewUserWorkgroupForm(FlaskForm):
-    workgroup = QuerySelectField(
-        query_factory=workgroup_select_factory,
-        allow_blank=True,
-        blank_text='Select a new Workgroup...')
-    confirm_work = BooleanField(
-        "Confirm the selection", [
-            validators.InputRequired()])
-    submit = SubmitField('Select Work Group')
 
 
 class NewPasswordForm(FlaskForm):

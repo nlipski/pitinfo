@@ -3,6 +3,7 @@ from sqlalchemy import Column, DECIMAL, DateTime, ForeignKey, Integer, String, T
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from app.models import db
+from app.mod_auth.models import *
 
 from datetime import datetime
 
@@ -20,9 +21,10 @@ class Consumable_model(db.Model):
     supplier = Column(String(45))
     explosive = Column(Boolean, default= False, nullable=False)
     active = Column(Boolean, default= False, nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
-    
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
+
     consumables_type_id = Column(ForeignKey('consumables_type.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     consumables_type = relationship('Consumables_type_model')
 
@@ -32,8 +34,9 @@ class Consumables_type_model(db.Model):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     consumables_class_id = Column(ForeignKey('consumables_class.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     consumables_class = relationship('Consumables_class_model')
 
@@ -65,13 +68,14 @@ class Activity_type_model(db.Model):
     id = Column(Integer, primary_key=True, comment='Types of activities: load and haul, drilling, blasting.')
     name = Column(String(45), nullable=False)
     comment = Column(String(45), nullable=True)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
 
 
 class Downtime_class_model(db.Model):
-    __tablename__ = 'dwnclass'
+    __tablename__ = 'Downtime_class'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
@@ -90,11 +94,12 @@ class Downtime_type_model(db.Model):
     maintenance = Column(Boolean, nullable=False)
     planned = Column(Boolean, nullable=False)
     ops = Column(Boolean, nullable=False)
-    dwnclass_id = Column(ForeignKey('dwnclass.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    dwnclass_id = Column(ForeignKey('Downtime_class.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
-    dwnclass = relationship('Dwnclas')
+    dwnclass = relationship('Downtime_class_model')
 
 
 class Downtime_model(db.Model):
@@ -108,8 +113,9 @@ class Downtime_model(db.Model):
     usable = Column(Boolean, nullable=False)
 
     comment = Column(String(45), nullable=True)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
     downtime_type_id = Column(ForeignKey('downtime_type.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     downtime_type = relationship('Downtime_type_model')
@@ -151,9 +157,10 @@ class Location_openpit_model(db.Model):
 
     id = Column(Integer, primary_key=True, comment='The material source locations by pit, stage, RL, blast, block, flitch.')
     comment = Column(String(45), nullable=True)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
-    
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
+
     stage = Column(String(45), nullable=False)
     rl = Column(String(45), nullable=False)
     blast = Column(String(45), nullable=True)
@@ -225,8 +232,9 @@ class Plant_type_model(db.Model):
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
     active = Column(Boolean, nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
     plant_class_id = Column(ForeignKey('plant_class.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     plant_class = relationship('Plant_class_model')
@@ -238,8 +246,9 @@ class Plant_model(db.Model):
     id = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
     active = Column(Boolean, nullable=False)
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
     start = Column(DateTime, nullable=False)
     retired = Column(DateTime, nullable=True)
     
@@ -259,8 +268,9 @@ class Plant_hour_model(db.Model):
     
     comment = Column(String(45), nullable=True)
     
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
 
     drilling_id = Column(ForeignKey('drilling.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     drilling = relationship('Drilling_model')
@@ -371,8 +381,8 @@ class Shift_activity_model(db.Model):
     pit_id = Column(ForeignKey('pit.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
     pit = relationship('Pit_model')
 
-    person = relationship('user_model', primaryjoin='Shift_activity.shiftboss == user_model.id')
-    person1 = relationship('user_model', primaryjoin='Shift_activity.supervisor == user_model.id')
+    # person = relationship('user_model', primaryjoin='Shift_activity.shiftboss == users.id')
+    # person1 = relationship('user_model', primaryjoin='Shift_activity.supervisor == users.id')
 
 
 class Survey_model(db.Model):
@@ -447,9 +457,10 @@ class Drilling_model(db.Model):
     azimuth = Column(Integer, nullable=False)
     dip = Column(Integer, nullable=True)
 
-    created = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    modified = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
-    
+    date_created = Column(DateTime, default=func.current_timestamp())
+    date_modified = db.Column(DateTime, default=func.current_timestamp(),
+                              onupdate=func.current_timestamp())
+
     
     redrill = Column(Boolean, nullable=False, default=False)
     drill_pattern = Column(String(45), nullable=True)
@@ -479,7 +490,7 @@ class Loadhaul_model(db.Model):
     id = Column(Integer, primary_key=True, comment='The truck counts table.')
     start = Column(DateTime, nullable=False)
     end = Column(DateTime, nullable=False)
-    movementtype = Column(Integer, nullable=False, server_default=text("'0'"), comment='crusher feed, haulage, rehandle, etc.')
+    movementtype = Column(Integer, nullable=False, default=0, comment='crusher feed, haulage, rehandle, etc.')
     loads = Column(Integer, nullable=False)
     comments = Column(String(45), nullable=True)
     bcm = Column(DECIMAL(10, 0), nullable=False)
@@ -495,7 +506,7 @@ class Loadhaul_model(db.Model):
     stockpile = relationship('Stockpile_model')
 
     parcel = relationship('Parcel_model')
-    plant_hours = relationship('Plant_hour_model', secondary='plant_hour_has_loadhaul')
+    # plant_hours = relationship('Plant_hour_model', secondary='plant_hour_has_loadhaul')
 
 
 class Firing_model(db.Model):
@@ -522,7 +533,7 @@ class Firing_model(db.Model):
     subdrill = Column(DECIMAL(10, 0), nullable=True)
 
     drilling = relationship('Drilling_model')
-    firing_type = relationship('firing_type')
+    firing_type = relationship('Firing_type_model')
     location = relationship('Location_openpit_model')
 
 
@@ -536,8 +547,8 @@ class Stockpile_balance_model(db.Model):
     adjounces = Column(DECIMAL(10, 0), nullable=False)
     grade = Column(DECIMAL(10, 0), nullable=False)
     adjgrade = Column(DECIMAL(10, 0), nullable=False)
-    loadhaul_id = Column(ForeignKey('loadhaul_model.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
-    location_id = Column(ForeignKey('location_openpit_model.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
+    loadhaul_id = Column(ForeignKey('loadhaul.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
+    location_id = Column(ForeignKey('location_openpit.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True)
 
     loadhaul = relationship('Loadhaul_model')
     location = relationship('Location_openpit_model')
@@ -576,7 +587,7 @@ class Firing_measure_model(db.Model):
 
 
 
-# t_plant_hour_has_loadhaul = Table(
+# plant_hour_has_loadhaul = Table(
 #     'plant_hour_has_loadhaul', metadata,
 #     Column('plant_hour_id', ForeignKey('plant_hour.id', ondelete='CASCADE', onupdate='CASCADE'), primary_key=True, nullable=False, index=True),
 #     Column('loadhaul_id', ForeignKey('loadhaul.id', ondelete='CASCADE', onupdate='CASCADE'), primary_key=True, nullable=False, index=True)

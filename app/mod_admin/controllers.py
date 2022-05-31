@@ -61,102 +61,17 @@ def create_admin_views(app, db):
             name='Application Admin',
             template_mode='bootstrap4')
     admin.add_view(
-        MyFileView(
-            app.config['PATH_PERSONAL_FILES'],
-            'data/personal_files',
-            name='Personal Files',
-            category="Documents"))
-    admin.add_view(
         MyModelView(
             user_model,
             db.session,
             name="Users Information",
             category="Personnel"))
-
-    admin.add_view(
-        MyModelView(
-            workgroup_model,
-            db.session,
-            name="Workgroups",
-            category="Personnel"))
-    admin.add_view(
-        MyModelView(
-            site_model,
-            db.session,
-            name="Sites",
-            category="Personnel"))
-    admin.add_view(
-        MyModelView(
-            contact_model,
-            db.session,
-            name="Contacts",
-            category="Personnel"))
-    admin.add_view(
-        MyModelView(
-            category_model,
-            db.session,
-            name="Categories",
-            category="Personnel"))
-
-    admin.add_view(
-        MyModelView(
-            role_model,
-            db.session,
-            name="Roles",
-            category="Personnel"))
-
-    admin.add_view(
-        MyModelView(
-            job_model,
-            db.session,
-            name="Jobs",
-            category="Personnel"))
-
     admin.add_view(
         MyModelView(
             department_model,
             db.session,
             name="Departments",
             category="Personnel"))
-
-    admin.add_view(
-        MyModelView(
-            echelon_model,
-            db.session,
-            name="Echelons",
-            category="Personnel"))
-
-    admin.add_view(
-        MyModelView(
-            phase_model,
-            db.session,
-            name="Phases",
-            category="Personnel"))
-
-    admin.add_view(
-        MyModelView(
-            personal_document_model,
-            db.session,
-            name="Personal Documents Table",
-            category="Documents"))
-    admin.add_view(
-        MyModelView(
-            edit_profile_request_model,
-            db.session,
-            name="Profile Edit Requests",
-            category="Requests"))
-    admin.add_view(
-        MyModelView(
-            role_history_model,
-            db.session,
-            name="User Role History",
-            category="Personnel"))
-    admin.add_view(
-        MyModelView(
-            document_type_model,
-            db.session,
-            name="Document Types",
-            category="Documents"))
     admin.add_view(
         MyModelView(
             deactivate_user_request_model,
