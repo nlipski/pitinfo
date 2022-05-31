@@ -4,30 +4,30 @@ from app.mod_pit.models import * # models is the db
 from app.mod_pit.controllers import * #controllers are the connecting logic between the front-end and back-end
 
 def create_pit(database, name):
-    pit = Pit(name = name)
+    pit = Pit_model(name = name)
     database.session.add(pit)
     database.session.commit()
 
 def create_location(database, name, pit, stage, rl, blast = "", block = "", flitch = ""):
     #do nothing
     #locationop name is not needed. delete in the db 
-    location = Locationop(name = name, pit = pit, stage = stage,
+    location = Location_openpit_model(name = name, pit = pit, stage = stage,
                         rl = rl, blast = blast,
                         block = block, flitch = flitch)
     database.session.add(location)
     database.session.commit()
 
 def create_stockpile(database, name, ore, rom):
-    stockpile = Stockpile(name = name, ore = ore, rom = rom)
+    stockpile = Stockpile_model(name = name, ore = ore, rom = rom)
     database.session.add(stockpile)
     database.session.commit()
 
 def test__create_stockpile(database):
     name = "Test stockpile"
     create_stockpile(database, name = name, ore = True, rom = True)    
-    stockpile = Stockpile.query.first()
+    stockpile = Stockpile_model.query.first()
     
-    rows = database.session.query(Locationop).count() #count the number of rows
+    rows = database.session.query(Location_openpit_model).count() #count the number of rows
 
     assert rows == 1
     assert location.name == name
@@ -40,7 +40,7 @@ def test__create_stockpile(database):
 
 def test__create_location(database):
     create_pit(database, name = "Test Pit 1")    
-    pit = Pit.query.first()
+    pit = Pit_model.query.first()
     
     name = "test name"
     location_pit = pit.id
@@ -54,9 +54,9 @@ def test__create_location(database):
     
     #... still need to write.
     
-    rows = database.session.query(Locationop).count() #count the number of rows
+    rows = database.session.query(Location_openpit_model).count() #count the number of rows
     
-    location = Locationop.query.first()
+    location = Location_openpit_model.query.first()
     
     assert rows == 1
     assert location.name == name
@@ -74,8 +74,8 @@ def test__create_pit(database):
     create_pit(database, name)
     database.session.commit()
 
-    pit = Pit.query.first() #pull the first database entry
-    rows = database.session.query(Pit).count() #count the number of rows
+    pit = Pit_model.query.first() #pull the first database entry
+    rows = database.session.query(Pit_model).count() #count the number of rows
 
     assert pit.name == name
     assert rows ==1
@@ -104,14 +104,14 @@ def test__delete_pit(database):
     for i in range(num_of_locations):
         create_location(database, name = name + str(i), pit = location_pit, stage = stage + str(i), rl = rl + str(i), blast = blast + str(i), block = block + str(i))
 
-    rows = database.session.query(Locationop).count() #count the number of rows 
+    rows = database.session.query(Location_openpit_model).count() #count the number of rows 
 
     assert rows == num_of_locations
 
     database.session.delete(pit)
     database.session.commit()
 
-    rows = database.session.query(Locationop).count() #count the number of rows 
+    rows = database.session.query(Location_openpit_model).count() #count the number of rows 
 
-    assert database.session.query(Locationop).count() == 0
-    assert database.session.query(Pit).count() == 0
+    assert database.session.query(Location_openpit_model).count() == 0
+    assert database.session.query(Pit_model).count() == 0
