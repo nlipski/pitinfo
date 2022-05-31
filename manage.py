@@ -1,9 +1,8 @@
-import os
 import json
+import os
 import signal
 import subprocess
 import time
-
 import click
 import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
@@ -136,6 +135,12 @@ def compose(subcommand):
         p.wait()
 
 
+"""
+It runs the tests in the specified files, using the `testing` configuration, and then shuts down the
+containers
+
+:param filenames: The list of files to run
+"""
 @cli.command()
 @click.argument("filenames", nargs=-1)
 def test(filenames):
@@ -185,6 +190,12 @@ def compile():
         raise RuntimeError('compile command failed')
 
 
+"""
+It extracts the strings to be translated from the source code, creates a new translation file for
+the language specified, and then removes the temporary file
+
+:param lang: The language code for the new language
+"""
 @translate.command()
 @click.argument('lang')
 def init(lang):
